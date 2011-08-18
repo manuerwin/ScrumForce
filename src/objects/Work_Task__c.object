@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Add Sprint Backlog Tasks for a piece of Work</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Task description</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Task description</inlineHelpText>
+        <label>Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Estimated_Hours__c</fullName>
+        <description>Number of hours for this Task</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of hours for this Task</inlineHelpText>
+        <label>Estimated Hours</label>
+        <precision>2</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remaining_Hours__c</fullName>
+        <description>Total number of hours remaining to complete this Task</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total number of hours remaining to complete this Task</inlineHelpText>
+        <label>Remaining Hours</label>
+        <precision>2</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of this Task</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of this Task</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Planned</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Task_Id__c</fullName>
+        <description>Unique value for this Task</description>
+        <displayFormat>T-{000}</displayFormat>
+        <externalId>false</externalId>
+        <inlineHelpText>Unique value for this Task</inlineHelpText>
+        <label>Task Id</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Work__c</fullName>
+        <description>The parent piece of Work</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The parent piece of Work</inlineHelpText>
+        <label>Work</label>
+        <referenceTo>Work__c</referenceTo>
+        <relationshipLabel>Work Tasks</relationshipLabel>
+        <relationshipName>Work_Tasks</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <trackHistory>false</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <label>Work Task</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Work__c</columns>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Estimated_Hours__c</columns>
+        <columns>Remaining_Hours__c</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Work Task Title</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Work Tasks</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Work__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Task_Id__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Estimated_Hours__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Remaining_Hours__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

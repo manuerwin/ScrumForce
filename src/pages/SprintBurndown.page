@@ -1,0 +1,25 @@
+<apex:page standardController="Sprint__c" extensions="SprintBurndown_VfExt">
+	<apex:outputPanel id="burndownCharts" layout="block" rendered="{!sprintBurndownsExist}" >
+	<c:LineChart jsondata="{!pointsRemainingOverTime}" 
+	                width="400" height="300" 
+	                title="Points Burndown"
+					enableTooltip="true"
+	                legend="none"
+	                showCategories="true"
+	                titleX="Date"
+	                titleY="Points Remaining"
+	                smoothLine="false" />      
+	<c:LineChart jsondata="{!hoursRemainingOverTime}" 
+	                width="400" height="300"
+	                title="Hours Burndown"
+					enableTooltip="true"
+	                legend="none"
+	                showCategories="true"
+	                titleX="Date"
+	                titleY="Hours Remaining"
+	                smoothLine="false" />      
+	</apex:outputPanel>
+	<apex:outputPanel id="noBurndownCharts" layout="block" rendered="{!!sprintBurndownsExist}" >
+		<apex:pageMessage summary="No Sprint Burndown records exist to construct the burndown charts." severity="info" strength="3" />
+	</apex:outputPanel>
+</apex:page>
