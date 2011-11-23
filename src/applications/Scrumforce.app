@@ -4,6 +4,7 @@
     <description>Application to enable Scrum teams to capture and manage Work (User Stories, Bug).</description>
     <label>Scrumforce</label>
     <logo>Scrumforce_Files/scrumforce_logo.png</logo>
+    <tab>standard-File</tab>
     <tab>Theme__c</tab>
     <tab>Epic__c</tab>
     <tab>Work__c</tab>

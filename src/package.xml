@@ -31,6 +31,11 @@
         <name>CustomTab</name>
     </types>
     <types>
+        <members>Scrumforce_Files</members>
+        <members>Scrumforce_Files/scrumforce_logo.png</members>
+        <name>Document</name>
+    </types>
+    <types>
         <members>Epic__c-Epic Layout</members>
         <members>Sprint_Burndown__c-Sprint Burndown Layout</members>
         <members>Sprint__c-Sprint Layout</members>
