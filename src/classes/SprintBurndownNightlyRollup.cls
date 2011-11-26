@@ -1,8 +1,16 @@
-global class SprintBurndownNightlyRollup implements Database.Batchable<sObject> {
+global class SprintBurndownNightlyRollup implements Database.Batchable<sObject>, Database.Stateful {
 	//////////////////////////////////////
 	// Created: 25-Nov-2011 By: Manu Erwin
 	// Purpose: Rollup all active Work (Points) and Work Tasks (Hours) to their parent Sprints.
 	//////////////////////////////////////
+
+	// Map of Sprint Ids to Sprint Burndown records that will populated during the process
+	global Map<Id, Sprint_Burndown__c> mapSprintIdToSprintBurndown;
+
+	// Constructor
+	global SprintBurndownNightlyRollup () {
+		mapSprintIdToSprintBurndown = new Map<Id, Sprint_Burndown__c>();
+	}
 
 	global Database.QueryLocator start(Database.BatchableContext BC) {
 		// Find all Work (and 'active' child Work Tasks) where the 'parent' Sprint is active
@@ -27,8 +35,6 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject> 
 			setSprintIds.add(workRecord.Sprint__c);
 		}
 
-		Map<Id, Sprint_Burndown__c> mapSprintIdToSprintBurndown = new Map<Id, Sprint_Burndown__c>();
-
 		// Loop through Work records
 		for (Work__c work : listWorks) {
 			Sprint_Burndown__c sprintBurndown;
@@ -37,22 +43,27 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject> 
 			if (mapSprintIdToSprintBurndown.containsKey(work.Sprint__c)) {
 				sprintBurndown = mapSprintIdToSprintBurndown.get(work.Sprint__c);
 			} else {
-				sprintBurndown = new Sprint_Burndown__c(Sprint__c = work.Sprint__c, Date__c = System.today());
+				sprintBurndown = new Sprint_Burndown__c(Sprint__c = work.Sprint__c, Date__c = System.today(),
+								Total_Points_Remaining__c = 0, Total_Hours_Remaining__c =0 );
 			}
 
 			// add Work Story Points to SprintBurndown
-			sprintBurndown.Total_Points_Remaining__c = work.Story_Points__c;
+			sprintBurndown.Total_Points_Remaining__c += work.Story_Points__c;
+
 			// Loop child Work Tasks
 			for (Work_Task__c workTask : work.Work_Tasks__r) {
 				// add Hours Remaining to SprintBurndown
-				sprintBurndown.Total_Hours_Remaining__c = workTask.Remaining_Hours__c;
+				sprintBurndown.Total_Hours_Remaining__c += workTask.Remaining_Hours__c;
 			}
+
 			// put SprintBurndown (back) into Map
 			mapSprintIdToSprintBurndown.put(work.Sprint__c, sprintBurndown);
 		}
-		// insert list of SprintBurndown records
-		insert mapSprintIdToSprintBurndown.values();
 	}
 
-	global void finish(Database.BatchableContext BC) {}
+	global void finish(Database.BatchableContext BC) {
+		// insert list of SprintBurndown records that have been populated during the batch process
+		System.debug(mapSprintIdToSprintBurndown.values());
+		insert mapSprintIdToSprintBurndown.values();
+	}
 }

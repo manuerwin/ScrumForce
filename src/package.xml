@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>SprintBurndownNightlyRollup</members>
+        <members>SprintBurndownNightlyRollup_Schedule</members>
         <members>SprintBurndownNightlyRollup_Test</members>
         <members>SprintBurndown_VfExt</members>
         <name>ApexClass</name>
