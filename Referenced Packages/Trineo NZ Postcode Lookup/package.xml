@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trineo NZ Postcode Lookup</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <description>Trineo NZ Postcode Lookup allows you to get the correct address format and postcode for a New Zealand address stored on Contact and Account records</description>
+    <namespacePrefix>nzpcode</namespacePrefix>
+    <types>
+        <members>AddressRecord</members>
+        <members>PcodeLookup</members>
+        <members>PcodeLookupAccount</members>
+        <members>PcodeLookupContact</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>PcodeLookupAccount</members>
+        <members>PcodeLookupContact</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Account.NZ_Postcode_Lookup</members>
+        <members>Contact.NZ_Postcode_Lookup_Contact</members>
+        <name>WebLink</name>
+    </types>
+    <version>20.0</version>
+</Package>

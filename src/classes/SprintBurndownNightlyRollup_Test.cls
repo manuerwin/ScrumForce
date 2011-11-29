@@ -17,6 +17,13 @@ private class SprintBurndownNightlyRollup_Test {
 							Story_Points__c = 2);
 		}
 
+		insert listWorks;
+
+		Test.startTest();
+			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
+			Database.executeBatch(sch);
+		Test.stopTest();
+
 		List<Sprint_Burndown__c> listSprintBurns =	[SELECT Id, Sprint__c
 													FROM Sprint_Burndown__c
 													WHERE Sprint__c = :sprint01.Id];

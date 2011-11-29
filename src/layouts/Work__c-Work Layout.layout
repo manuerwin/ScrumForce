@@ -9,11 +9,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Epic__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Work_Number__c</field>
+                <field>Sprint__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -27,15 +23,15 @@
                 <behavior>Edit</behavior>
                 <field>Rank__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Sprint__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Epic__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -74,6 +70,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>CreatedById</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Work_Number__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

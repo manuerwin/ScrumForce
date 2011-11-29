@@ -179,11 +179,13 @@
     <listViews>
         <fullName>All</fullName>
         <columns>Work_Number__c</columns>
+        <columns>Sprint__c</columns>
         <columns>NAME</columns>
         <columns>Story_Points__c</columns>
         <columns>Status__c</columns>
         <columns>Priority__c</columns>
         <columns>Rank__c</columns>
+        <columns>Epic__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

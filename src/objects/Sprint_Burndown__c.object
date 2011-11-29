@@ -84,6 +84,18 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Unique_Sprint_Burndown__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>A Sprint Burndown record should be unique per sprint and day</description>
+        <externalId>true</externalId>
+        <inlineHelpText>A Sprint Burndown record should be unique per sprint and day. This field is populated by the system.</inlineHelpText>
+        <label>Unique Sprint Burndown</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
     <label>Sprint Burndown</label>
     <listViews>
         <fullName>All</fullName>

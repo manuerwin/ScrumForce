@@ -77,6 +77,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sprint__c</fullName>
+        <description>The parent Sprint for this piece of Work</description>
+        <externalId>false</externalId>
+        <formula>Work__r.Sprint__r.Name</formula>
+        <inlineHelpText>The parent Sprint for this piece of Work</inlineHelpText>
+        <label>Sprint</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Status__c</fullName>
         <description>Status of this Task</description>
         <externalId>false</externalId>
@@ -84,7 +96,7 @@
         <label>Status</label>
         <picklist>
             <picklistValues>
-                <fullName>Planned</fullName>
+                <fullName>Not Started</fullName>
                 <default>true</default>
             </picklistValues>
             <picklistValues>
@@ -119,17 +131,16 @@
         <referenceTo>Work__c</referenceTo>
         <relationshipLabel>Work Tasks</relationshipLabel>
         <relationshipName>Work_Tasks</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
+        <required>false</required>
         <trackHistory>false</trackHistory>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+        <type>Lookup</type>
     </fields>
     <label>Work Task</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>Sprint__c</columns>
         <columns>Work__c</columns>
         <columns>NAME</columns>
-        <columns>Description__c</columns>
         <columns>Estimated_Hours__c</columns>
         <columns>Remaining_Hours__c</columns>
         <columns>Status__c</columns>
@@ -150,5 +161,5 @@
         <searchResultsAdditionalFields>Remaining_Hours__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
