@@ -19,9 +19,9 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject>,
 	        System.debug(System.LoggingLevel.DEBUG, '##DEBUG: Using the default query for Production execution');
         	strQuery =	'SELECT Id, Sprint__c, Story_Points__c, ' +
                             '(SELECT Id, Work__c, Remaining_Hours__c FROM Work__c.Work_Tasks__r ' +
-	                        'WHERE Status__c IN (\'Not Started\', \'In Progress\')' +
+	                        'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
                         'FROM Work__c ' +
-                        'WHERE Status__c IN (\'Not Started\', \'In Progress\')' +
+                        'WHERE Status__c IN (\'Not Started\', \'In Progress\') ' +
                         'AND Sprint__r.Status__c = \'In Progress\'';
         } else {
 	        System.debug(System.LoggingLevel.DEBUG, '##DEBUG: strQuery has been set - i.e., for testing');
