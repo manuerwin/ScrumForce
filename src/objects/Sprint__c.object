@@ -101,6 +101,11 @@
     <label>Sprint</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Start_Date__c</columns>
+        <columns>End_Date__c</columns>
+        <columns>Total_Sprint_Days__c</columns>
+        <columns>Status__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
