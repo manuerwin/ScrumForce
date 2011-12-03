@@ -10,7 +10,7 @@ public with sharing class VirtualWall_VfExt {
         get {
             if (listWorks == null) {
                 listWorks = [SELECT Id, Name,
-                                (SELECT Id, Name
+                                (SELECT Id, Name, Description__c
                                 FROM Work_Tasks__r)
                             FROM Work__c];
             }
