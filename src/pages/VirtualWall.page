@@ -1,0 +1,8 @@
+<apex:page standardController="Work_Task__c" extensions="VirtualWall_VfExt" >
+    <apex:repeat id="works" value="{!listWorks}" var="work">
+    	{!work.Name}
+    	<apex:repeat id="tasks" value="{!work.Work_Tasks__r}" var="task" >
+    		{!task.Name}
+    	</apex:repeat>
+    </apex:repeat>
+</apex:page>

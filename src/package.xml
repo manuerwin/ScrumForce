@@ -5,10 +5,12 @@
         <members>SprintBurndownNightlyRollup_Schedule</members>
         <members>SprintBurndownNightlyRollup_Test</members>
         <members>SprintBurndown_VfExt</members>
+        <members>VirtualWall_VfExt</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>SprintBurndown</members>
+        <members>VirtualWall</members>
         <name>ApexPage</name>
     </types>
     <types>

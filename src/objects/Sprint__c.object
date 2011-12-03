@@ -46,7 +46,7 @@
         <inlineHelpText>End date for this Sprint</inlineHelpText>
         <label>End Date</label>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Date</type>
     </fields>
     <fields>
@@ -56,7 +56,7 @@
         <inlineHelpText>Start date for the Sprint</inlineHelpText>
         <label>Start Date</label>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Date</type>
     </fields>
     <fields>
@@ -80,7 +80,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -111,7 +111,7 @@
     </listViews>
     <nameField>
         <label>Sprint Name</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Sprints</pluralLabel>
