@@ -1,189 +1,68 @@
 <apex:page standardController="Work_Task__c" extensions="VirtualWall_VfExt" >
+	<style type="text/css">
+		/* Prevent the text contents of draggable elements from being selectable. */
+		*[draggable=true] {
+			user-select: none;
+			-moz-user-select:none;
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			-khtml-user-drag: element;
+			cursor: move;
+		}
+		*:-khtml-drag {
+			background-color: rgba(238,238,238, 0.5);
+		}
+		.column {
+			height: 50px;
+			width: 50px;
+			Xfloat: left;
+			border: 2px solid #666666;
+			background-color: #ccc;
+			margin-right: 5px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			-webkit-box-shadow: inset 0 0 3px #000;
+			box-shadow: inset 0 0 3px #000;
+			text-align: center;
+			cursor: move;
+		}
+		.dropzone {
+			background-color: yellow;
+			width: 150px;
+			height: 200px;
+			float: left;
+		}
+		.header {
+			width: 150px;
+			float: left;
+		}
+		.work {
+			background-color: light-grey;
+			Xclear: left;
+		}
+		.workName {
+			background-color: orange;
+			width: 150px;
+			height: 50px;
+		}
+	</style>
+	<article>
+	    <apex:outputPanel id="container" layout="block">
+	    	<apex:outputPanel id="scrum-header" layout="block">
+				<apex:outputPanel id="header-stories" layout="block" styleclass="header" >STORIES</apex:outputPanel>
+				<apex:outputPanel id="header-toDo" layout="block" styleclass="header" >To Do</apex:outputPanel>
+				<apex:outputPanel id="header-inProgress" layout="block" styleclass="header" >In Progress</apex:outputPanel>
+				<apex:outputPanel id="header-verify" layout="block" styleclass="header" >Verify</apex:outputPanel>
+				<apex:outputPanel id="header-done" layout="block" styleclass="header" >Done</apex:outputPanel>
+			</apex:outputPanel>
+		    <apex:repeat id="works" value="{!listWorks}" var="work">
 
-<style type="text/css">
-li {
-  list-style: none;
-}
-
-li a {
-  text-decoration: none;
-  color: #000;
-  margin: 10px;
-  width: 150px;
-  border: 3px dashed #999;
-  background: #eee;
-  padding: 10px;
-  display: block;
-}
-
-*[draggable=true] {
-  -moz-user-select:none;
-  -khtml-user-drag: element;
-  cursor: move;
-}
-
-*:-khtml-drag {
-  background-color: rgba(238,238,238, 0.5);
-}
-
-li a:hover:after {
-  content: ' (drag me)';
-}
-
-ul {
-  margin-left: 200px;
-  min-height: 300px;
-}
-
-li.over {
-  border-color: #333;
-  background: #ccc;
-}
-
-#bin {
-  background: url(images/bin.jpg) top right no-repeat;
-  height: 250px;
-  width: 166px;
-  float: left;
-  border: 5px solid #000;
-  position: relative;
-  margin-top: 0;
-}
-
-#bin.over {
-  background: url(images/bin.jpg) top left no-repeat;
-}
-
-#bin p {
-  font-weight: bold;
-  text-align: center;
-  position: absolute;
-  bottom: 20px;
-  width: 166px;
-  font-size: 32px;
-  color: #fff;
-  text-shadow: #000 2px 2px 2px;
-}
-
-/* Prevent the text contents of draggable elements from being selectable. */
-[draggable] {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.column {
-  height: 150px;
-  width: 150px;
-  float: left;
-  border: 2px solid #666666;
-  background-color: #ccc;
-  margin-right: 5px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 3px #000;
-  box-shadow: inset 0 0 3px #000;
-  text-align: center;
-  cursor: move;
-}
-.column header {
-  color: #fff;
-  text-shadow: #000 0 1px;
-  box-shadow: 5px;
-  padding: 5px;
-  background: -moz-linear-gradient(left center, rgb(0,0,0), rgb(79,79,79), rgb(21,21,21));
-  background: -webkit-gradient(linear, left top, right top,
-                               color-stop(0, rgb(0,0,0)),
-                               color-stop(0.50, rgb(79,79,79)),
-                               color-stop(1, rgb(21,21,21)));
-  border-bottom: 1px solid #ddd;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topleft: 10px;
-  border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  border-top-right-radius: 10px;
-}
-</style>
-<article>
-    <div id="bin"></div>
-    <apex:repeat id="works" value="{!listWorks}" var="work">
-    	<ul>Work Title: {!work.Name}
-    	<apex:repeat id="tasks" value="{!work.Work_Tasks__r}" var="task" >
-	    	<div class="column" draggable="true"><header>A</header></div>
-    		<li><a href="#" id="two">{!task.Name}</a></li>
-    		<div id="{!task}" draggable="true" >{!task.Name}</div>
-    	</apex:repeat>
-    	</ul>
-    </apex:repeat>
-</article>
-<script>
-  var eat = ['yum!', 'gulp', 'burp!', 'nom'];
-  var yum = document.createElement('p');
-  var msie = /*@cc_on!@*/0;
-  yum.style.opacity = 1;
-
-  var links = document.querySelectorAll('li > a'), el = null;
-  for (var i = 0; i < links.length; i++) {
-    el = links[i];
-  
-    el.setAttribute('draggable', 'true');
-  
-    addEvent(el, 'dragstart', function (e) {
-      e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
-      e.dataTransfer.setData('Text', this.id); // required otherwise doesn't work
-    });
-  }
-
-  var bin = document.querySelector('#bin');
-
-  addEvent(bin, 'dragover', function (e) {
-    if (e.preventDefault) e.preventDefault(); // allows us to drop
-    this.className = 'over';
-    e.dataTransfer.dropEffect = 'copy';
-    return false;
-  });
-
-  // to get IE to work
-  addEvent(bin, 'dragenter', function (e) {
-    this.className = 'over';
-    return false;
-  });
-
-  addEvent(bin, 'dragleave', function () {
-    this.className = '';
-  });
-
-  addEvent(bin, 'drop', function (e) {
-    if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
-
-    var el = document.getElementById(e.dataTransfer.getData('Text'));
-    
-    el.parentNode.removeChild(el);
-
-    // stupid nom text + fade effect
-    bin.className = '';
-    yum.innerHTML = eat[parseInt(Math.random() * eat.length)];
-
-    var y = yum.cloneNode(true);
-    bin.appendChild(y);
-
-    setTimeout(function () {
-      var t = setInterval(function () {
-        if (y.style.opacity <= 0) {
-          if (msie) { // don't bother with the animation
-            y.style.display = 'none';
-          }
-          clearInterval(t); 
-        } else {
-          y.style.opacity -= 0.1;
-        }
-      }, 50);
-    }, 250);
-
-    return false;
-  });
-</script>
-
+		    </apex:repeat>
+		</apex:outputPanel>
+	</article>
+	<script>
+	
+	</script>
 </apex:page>

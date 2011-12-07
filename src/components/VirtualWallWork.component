@@ -1,6 +1,18 @@
 <apex:component controller="VirtualWallWork_VfExt" >
-  <!-- Begin Default Content REMOVE THIS -->
-  <h1>Congratulations</h1>
-  This is your new Component
-  <!-- End Default Content REMOVE THIS -->
+	<apex:attribute name="work" type="WorkAndTasks" assignTo="{!oneWorkAndTasks}" required="true"
+		description="The custom Apex class that contains the Work record and list collections of child
+		Work Tasks grouped into Task Status" />
+
+   	<div id="work-{!oneWorkAndTasks.work.Id}" class="work">
+		<apex:outputPanel id="task-stories" layout="block" >
+			<div id="workName" class="workName" >{!oneWorkAndTasks.work.Name}</div>
+		</apex:outputPanel>
+		<div id="task-toDo" class="dropzone">TO DO</div>
+		<div id="task-inProgress" class="dropzone">IN PROGRESS</div>
+		<div id="task-verify" class="dropzone">VERIFY</div>
+		<div id="task-done" class="dropzone">DONE</div>
+		<apex:repeat id="tasks" value="{!oneWorkAndTasks.listTasksToDo}" var="task">
+   			<div id="{!task}" draggable="true" class="column" >{!task.Name}</div>
+    	</apex:repeat>
+	</div>
 </apex:component>
