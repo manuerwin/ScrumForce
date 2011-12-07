@@ -1,4 +1,4 @@
-<apex:component >
+<apex:component controller="VirtualWallWork_VfExt" >
   <!-- Begin Default Content REMOVE THIS -->
   <h1>Congratulations</h1>
   This is your new Component
