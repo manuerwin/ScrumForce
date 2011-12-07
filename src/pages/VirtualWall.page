@@ -57,8 +57,7 @@
 				<apex:outputPanel id="header-verify" layout="block" styleclass="header" >Verify</apex:outputPanel>
 				<apex:outputPanel id="header-done" layout="block" styleclass="header" >Done</apex:outputPanel>
 			</apex:outputPanel>
-		    <apex:repeat id="works" value="{!listWorks}" var="work">
-
+		    <apex:repeat id="works" value="{!listWorkAndTasks}" var="workAndTasks">
 		    </apex:repeat>
 		</apex:outputPanel>
 	</article>
