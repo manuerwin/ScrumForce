@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>SprintBurndownNightlyRollup</members>
         <members>SprintBurndownNightlyRollup_Schedule</members>
         <members>SprintBurndownNightlyRollup_Test</members>
         <members>SprintBurndown_VfExt</members>
+        <members>UpdateWorkTaskStatus_VfExt</members>
         <members>VirtualWallWork_VfExt</members>
         <members>VirtualWall_VfExt</members>
         <members>WorkAndTasks</members>
-        <members>UpdateWorkTaskStatus_VfExt</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -68,4 +68,3 @@
     </types>
     <version>20.0</version>
 </Package>
-
