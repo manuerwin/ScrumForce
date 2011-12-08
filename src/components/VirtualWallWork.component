@@ -1,21 +1,29 @@
-<apex:component controller="VirtualWallWork_VfExt" >
+<apex:component controller="VirtualWallWork_VfExt">
 	<apex:attribute name="work" type="WorkAndTasks" assignTo="{!oneWorkAndTasks}" required="true"
 		description="The custom Apex class that contains the Work record and list collections of child
 		Work Tasks grouped into Task Status" />
 
-	{!oneWorkAndTasks}
-<!--
-   	<div id="work{!oneWorkAndTasks.theWork.Id}" class="work">
-		<apex:outputPanel id="taskstories" layout="block" >
-			<div id="workName" class="workName" >{!oneWorkAndTasks.theWork.Name}</div>
-		</apex:outputPanel>
-		<div id="tasktoDo" class="dropzone">TO DO</div>
-		<div id="taskinProgress" class="dropzone">IN PROGRESS</div>
-		<div id="taskverify" class="dropzone">VERIFY</div>
-		<div id="taskdone" class="dropzone">DONE</div>
-		<apex:repeat id="tasks" value="{!oneWorkAndTasks.listTasksToDo}" var="task">
-   			<div id="{!task}" draggable="true" class="column" >{!task.Name}</div>
-    	</apex:repeat>
+   	<div id="work{!work.theWork.Id}" class="row">
+		<div id="taskWork" class="cell">
+			<div id="workName" >{!work.theWork.Name}</div>
+		</div>
+		<div id="tasktoDo" class="cell dropzone">TO DO
+			<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
+	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
+	    	</apex:repeat>
+		</div>
+		<div id="taskinProgress" class="cell dropzone">IN PROGRESS
+			<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
+	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
+	    	</apex:repeat>
+		</div>
+		<div id="taskverify" class="cell dropzone">
+		
+		</div>
+		<div id="taskdone" class="cell dropzone">
+			<apex:repeat id="tasksDone" value="{!work.listTasksDone}" var="task">
+	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
+	    	</apex:repeat>
+		</div>
 	</div>
--->
 </apex:component>

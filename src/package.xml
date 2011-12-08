@@ -17,6 +17,7 @@
     <types>
         <members>SprintBurndown</members>
         <members>VirtualWall</members>
+        <members>VirtualWallCss</members>
         <name>ApexPage</name>
     </types>
     <types>

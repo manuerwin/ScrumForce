@@ -6,27 +6,26 @@ public with sharing class VirtualWall_VfExt {
     public List<WorkAndTasks> listWorkAndTasks {
         get {
             if (listWorkAndTasks == null) {
+			    listWorkAndTasks = new List<WorkAndTasks>();
                 // TODO: filter this by the target sprint
-                for (Work__c oneWork : [SELECT Id, Name, (SELECT Id, Name, Description__c FROM Work_Tasks__r)
+                for (Work__c oneWork : [SELECT Id, Name, (SELECT Id, Name, Description__c, Status__c
+                						FROM Work_Tasks__r)
                             			FROM Work__c] ) {
                 	WorkAndTasks oneWorkAndTasks = new WorkAndTasks();
-                	//List<Work_Task__c> listTasksNotStarted = new List<Work_Task__c>();
-                	//List<Work_Task__c> listTasksInProgress = new List<Work_Task__c>();
-                	//List<Work_Task__c> listTasksDone = new List<Work_Task__c>();
-/*
 					oneWorkAndTasks.theWork = oneWork;
-					for (Work_Task__c oneWorkTask : oneWork) {
-						if (oneWorkTask.Status == 'Not Started') {
+					for (Work_Task__c oneWorkTask : oneWork.Work_Tasks__r) {
+						if (oneWorkTask.Status__c == 'Not Started') {
 							oneWorkAndTasks.listTasksToDo.add(oneWorkTask);
-						} else if (oneWorkTask.Status == 'In Progress') {
+						} else if (oneWorkTask.Status__c == 'In Progress') {
 							oneWorkAndTasks.listTasksDoing.add(oneWorkTask);
-						} else if (oneWorkTask.Status == 'Done') {
+						} else if (oneWorkTask.Status__c == 'Done') {
 							oneWorkAndTasks.listTasksDone.add(oneWorkTask);
 						}
 					}
-*/
+					listWorkAndTasks.add(oneWorkAndTasks);
                 }
             }
+            System.debug(System.LoggingLevel.DEBUG, '## DEBUG: listWorkAndTasks before return: ' + listWorkAndTasks);
             return listWorkAndTasks;
         }
         set;

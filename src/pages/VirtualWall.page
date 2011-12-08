@@ -1,56 +1,8 @@
 <apex:page standardController="Work_Task__c" extensions="VirtualWall_VfExt" >
-	<style type="text/css">
-		/* Prevent the text contents of draggable elements from being selectable. */
-		*[draggable=true] {
-			user-select: none;
-			-moz-user-select:none;
-			-moz-user-select: none;
-			-khtml-user-select: none;
-			-webkit-user-select: none;
-			-khtml-user-drag: element;
-			cursor: move;
-		}
-		*:-khtml-drag {
-			background-color: rgba(238,238,238, 0.5);
-		}
-		.column {
-			height: 50px;
-			width: 50px;
-			Xfloat: left;
-			border: 2px solid #666666;
-			background-color: #ccc;
-			margin-right: 5px;
-			-webkit-border-radius: 10px;
-			-moz-border-radius: 10px;
-			border-radius: 10px;
-			-webkit-box-shadow: inset 0 0 3px #000;
-			box-shadow: inset 0 0 3px #000;
-			text-align: center;
-			cursor: move;
-		}
-		.dropzone {
-			background-color: yellow;
-			width: 150px;
-			height: 200px;
-			float: left;
-		}
-		.header {
-			width: 150px;
-			float: left;
-		}
-		.work {
-			background-color: light-grey;
-			Xclear: left;
-		}
-		.workName {
-			background-color: orange;
-			width: 150px;
-			height: 50px;
-		}
-	</style>
+	<apex:include pagename="VirtualWallCss" />
 	<article>
 	    <apex:outputPanel id="container" layout="block">
-	    	<apex:outputPanel id="scrum-header" layout="block">
+	    	<apex:outputPanel id="scrum-header" layout="block" styleClass="row">
 				<apex:outputPanel id="header-stories" layout="block" styleclass="header" >STORIES</apex:outputPanel>
 				<apex:outputPanel id="header-toDo" layout="block" styleclass="header" >To Do</apex:outputPanel>
 				<apex:outputPanel id="header-inProgress" layout="block" styleclass="header" >In Progress</apex:outputPanel>
@@ -58,10 +10,10 @@
 				<apex:outputPanel id="header-done" layout="block" styleclass="header" >Done</apex:outputPanel>
 			</apex:outputPanel>
 		    <apex:repeat id="works" value="{!listWorkAndTasks}" var="workAndTasks">
+		    	<c:VirtualWallWork work="{!workAndTasks}" />
 		    </apex:repeat>
 		</apex:outputPanel>
 	</article>
 	<script>
-	
 	</script>
 </apex:page>
