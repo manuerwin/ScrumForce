@@ -8,7 +8,7 @@ public with sharing class VirtualWall_VfExt {
             if (listWorkAndTasks == null) {
 			    listWorkAndTasks = new List<WorkAndTasks>();
                 // TODO: filter this by the target sprint
-                for (Work__c oneWork : [SELECT Id, Name, (SELECT Id, Name, Description__c, Status__c
+                for (Work__c oneWork : [SELECT Id, Name, Work_Number__c, (SELECT Id, Name, Description__c, Status__c
                 						FROM Work_Tasks__r)
                             			FROM Work__c] ) {
                 	WorkAndTasks oneWorkAndTasks = new WorkAndTasks();

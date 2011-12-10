@@ -75,6 +75,19 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>External_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>The unique case insensitive value for this record from another system. Only visible to Sys Admins.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>The unique case insensitive value for this record from another system. Only visible to Sys Admins.</inlineHelpText>
+        <label>External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>Priority__c</fullName>
         <description>The priority of this piece of work as set by the business through the Product Owner</description>
         <externalId>false</externalId>

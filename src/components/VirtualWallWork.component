@@ -5,14 +5,14 @@
 
    	<div id="work{!work.theWork.Id}" class="row">
 		<div id="taskWork" class="cell">
-			<div id="workName" >{!work.theWork.Name}</div>
+			<div id="workName" >{!work.theWork.Work_Number__c} {!work.theWork.Name}</div>
 		</div>
-		<div id="tasktoDo" class="cell dropzone">TO DO
+		<div id="tasktoDo" class="cell dropzone">
 			<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
 	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
 	    	</apex:repeat>
 		</div>
-		<div id="taskinProgress" class="cell dropzone">IN PROGRESS
+		<div id="taskinProgress" class="cell dropzone">
 			<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
 	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
 	    	</apex:repeat>

@@ -2,49 +2,53 @@
 	<style type="text/css">
 		/* Prevent the text contents of draggable elements from being selectable. */
 		*[draggable=true] {
+			cursor: move;
+			-khtml-user-drag: element;
 			user-select: none;
 			-moz-user-select:none;
 			-moz-user-select: none;
 			-khtml-user-select: none;
 			-webkit-user-select: none;
-			-khtml-user-drag: element;
-			cursor: move;
 		}
 		*:-khtml-drag {
 			background-color: rgba(238,238,238, 0.5);
 		}
 		.cell {
-			background-color: orange;
-			border: 2px solid #666666;
-			width: 150px;
 			float: left;
+			text-align: center;
+			width: 20%;
+		}
+		.container {
+			width: 99%;
 		}
 		.dropzone {
 			background-color: yellow;
+			min-height: 60px;
 		}
-		.header {
-			width: 150px;
-			float: left;
-		}
-		.row {
+		.headerRow {
 			background-color: light-grey;
-			height: 100px;
 			clear: left;
 		}
-		.task {
-			height: 50px;
-			width: 50px;
-			float: left;
+		.row {
 			border: 2px solid #666666;
+			background-color: light-grey;
+			clear: left;
+			min-height: 60px;
+		}
+		.task {
 			background-color: #ccc;
-			margin-right: 5px;
-			-webkit-border-radius: 10px;
-			-moz-border-radius: 10px;
-			border-radius: 10px;
-			-webkit-box-shadow: inset 0 0 3px #000;
-			box-shadow: inset 0 0 3px #000;
-			text-align: center;
+			border: 2px solid #666666;
 			cursor: move;
+			float: left;
+			height: 50px;
+			margin-right: 5px;
+			text-align: center;
+			width: 50px;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			box-shadow: inset 0 0 3px #000;
+			-webkit-border-radius: 10px;
+			-webkit-box-shadow: inset 0 0 3px #000;
 		}
 	</style>
 </apex:page>
