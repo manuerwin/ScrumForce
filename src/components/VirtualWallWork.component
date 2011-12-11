@@ -9,12 +9,12 @@
 		</div>
 		<div id="tasktoDo" class="cell dropzone">
 			<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
-	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
+	   			<div id="{!task.Id}" draggable="true" class="task draggable" >{!task.Name}</div>
 	    	</apex:repeat>
 		</div>
 		<div id="taskinProgress" class="cell dropzone">
 			<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
-	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
+	   			<div id="{!task.Id}" draggable="true" class="task draggable" >{!task.Name}</div>
 	    	</apex:repeat>
 		</div>
 		<div id="taskverify" class="cell dropzone">
@@ -22,7 +22,7 @@
 		</div>
 		<div id="taskdone" class="cell dropzone">
 			<apex:repeat id="tasksDone" value="{!work.listTasksDone}" var="task">
-	   			<div id="{!task.Id}" draggable="true" class="task" >{!task.Name}</div>
+	   			<div id="{!task.Id}" draggable="true" class="task draggable" >{!task.Name}</div>
 	    	</apex:repeat>
 		</div>
 	</div>
