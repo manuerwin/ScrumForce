@@ -7,20 +7,20 @@
 		<div id="taskWork" class="cell">
 			<div id="workName" >{!work.theWork.Work_Number__c} {!work.theWork.Name}</div>
 		</div>
-		<div id="tasktoDo" class="cell dropzone">
+		<div id="tasktoDo" class="cell dropArea">
 			<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
 	   			<div id="{!task.Id}" draggable="true" class="task draggable" >{!task.Name}</div>
 	    	</apex:repeat>
 		</div>
-		<div id="taskinProgress" class="cell dropzone">
+		<div id="taskinProgress" class="cell dropArea">
 			<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
 	   			<div id="{!task.Id}" draggable="true" class="task draggable" >{!task.Name}</div>
 	    	</apex:repeat>
 		</div>
-		<div id="taskverify" class="cell dropzone">
+		<div id="taskverify" class="cell dropArea">
 		
 		</div>
-		<div id="taskdone" class="cell dropzone">
+		<div id="taskdone" class="cell dropArea">
 			<apex:repeat id="tasksDone" value="{!work.listTasksDone}" var="task">
 	   			<div id="{!task.Id}" draggable="true" class="task draggable" >{!task.Name}</div>
 	    	</apex:repeat>

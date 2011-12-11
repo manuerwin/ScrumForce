@@ -1,11 +1,89 @@
 <apex:page standardController="Work_Task__c" extensions="VirtualWall_VfExt" >
 	<apex:include pagename="VirtualWallCss" />
+	<script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/lib/prototype.js')}"
+		type="text/javascript" />
+	<script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/src/scriptaculous.js')}"
+		type="text/javascript" />
+
+	<script type="text/javascript">
+		window.onload = function() {
+		    alert('### DEBUG: window.Onload');
+		    windowOnloadFunction();
+		}
+		function windowOnloadFunction() {
+		    alert('### DEBUG: windowOnloadFunction');
+		    makeJobsDraggable();
+		    makeDropAreasDroppable();
+		    attachExisting();
+		}
+		function makeJobsDraggable() {
+		    alert('### DEBUG: makeJobsDraggable');
+		    // Make all jobs on the page draggable
+		    $$('div.draggable').each(
+		        function(item) {
+		            new Draggable( item, {revert: true, ghosting: false, scroll: window} );
+		        }
+		    );
+		}
+		function makeDropAreasDroppable() {
+		    alert('### DEBUG: makeDropAreasDroppable');
+		    // Make all the drop areas droppable
+		    $$('div.dropArea').each(
+		        function(item) {
+		            Droppables.add( item, {hoverclass: 'hoverActive', onDrop: moveItem} );
+		        }
+		    );
+		}
+		function moveItem(draggable, dropArea){
+			alert('### DEBUG: moveItem');
+			var originalParent = draggable.parentNode;
+			draggable.parentNode.removeChild(draggable);
+			dropArea.appendChild(draggable);
+			// Update record with new owner and date time
+			var bolSuccess = updateRecord(draggable, dropArea);
+			if (!bolSuccess) {
+				// Return record to original drop area
+				draggable.parentNode.removeChild(draggable);
+				originalParent.appendChild(draggable);
+			}
+		}
+		function updateRecord(draggable, dropArea) {
+		    alert('### DEBUG: updateRecord');
+		    var bolSuccess = false;
+			// Obtain job id from draggable
+			var jobId = draggable.id;
+		    // Obtain id from drop area and break into OwnerId and Timeslot values
+		    var strDropAreaId = dropArea.id
+		    alert('##DEBUG: strDropAreaId: ' + strDropAreaId);
+		    var strArray = strDropAreaId.split('~');
+		    var strOwnerId = strArray[0];
+		    var strTimeSlot = strArray[1];
+		
+		    if (strOwnerId == 'scratchPad') {
+		        // Allow the move but do not update the record
+		        bolSuccess = true;
+		    }
+		    else if (strOwnerId == 'unassignedJobs') {
+		    	alert('#### DEBUG-TODO:Change the owner to the current user, remove the booked time, change status back to Unbooked');
+		    	bolSuccess = true;
+		    }
+		    else if ((jobId != "") && (strOwnerId != "") && (strTimeSlot != "")) {
+		        var newOwnerId = strOwnerId;
+		        var newDateTime = strTimeSlot;
+		        alert('##DEBUG: jobId / newOwnerId / newDateTime: ' + jobId + ' / ' + newOwnerId + ' / ' + newDateTime);
+		        updateRecordController(jobId, newOwnerId, newDateTime);
+		        bolSuccess = true;
+		    } else {
+		        // Prevent move and advise user
+		        alert('Unable to process information. Returning job to original booking.');
+		        bolSuccess = false;
+		    }
+		    return bolSuccess;
+		}
+	</script>
 
 	<article>
 	    <apex:outputPanel id="container" layout="block">
-	    
-	    	<div id="bin" layout="block" >BIN BIN BIN BIN BIN</div>
-	    
 	    	<apex:outputPanel id="scrum-header" layout="block" styleClass="headerRow">
 				<apex:outputPanel id="header-stories" layout="block" styleclass="cell" >Work</apex:outputPanel>
 				<apex:outputPanel id="header-toDo" layout="block" styleclass="cell" >To Do</apex:outputPanel>
@@ -18,57 +96,4 @@
 		    </apex:repeat>
 		</apex:outputPanel>
 	</article>
-
-	<script>
-
-	document.getElementsByClassName = function(cl) {
-		var retnode = [];
-		var myclass = new RegExp('\\b'+cl+'\\b');
-		var elem = this.getElementsByTagName('*');
-		for (var i = 0; i < elem.length; i++) {
-			var classes = elem[i].className;
-			if (myclass.test(classes)) retnode.push(elem[i]);
-		}
-		return retnode;
-	};
-
-	var draggables = document.getElementsByClassName('draggable'), dragEl = null;
-	for (var i = 0; i < draggables.length; i++) {
-	    dragEl = draggables[i];
-	  
-	    addEvent(dragEl, 'dragstart', function (e) {
-			e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
-			e.dataTransfer.setData('Text', this.id); // required otherwise doesn't work
-	    });
-	}
-	var dropzones = document.getElementsByClassName('dropzone'), dropEl = null;
-	for (var i = 0; i < dropzones.length; i++) {
-	    dropEl = dropzones[i];
-	  
-		addEvent(dropEl, 'dragover', function (e) {
-			if (e.preventDefault) e.preventDefault(); // allows us to drop
-			this.className = 'over';
-			e.dataTransfer.dropEffect = 'copy';
-			return false;
-		});
-		
-		// to get IE to work
-		addEvent(dropEl, 'dragenter', function (e) {
-			this.className = 'over';
-			return false;
-		});
-		
-		addEvent(dropEl, 'dragleave', function () {
-			this.className = '';
-		});
-		
-		addEvent(dropEl, 'drop', function (e) {
-		if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
-			var el = document.getElementById(e.dataTransfer.getData('Text'));
-			el.parentNode.removeChild(el);	
-			return false;
-		});
-	}
-
-	</script>
 </apex:page>
