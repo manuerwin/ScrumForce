@@ -7,18 +7,17 @@
 
 	<script type="text/javascript">
 		window.onload = function() {
-		    alert('### DEBUG: window.Onload');
+		    //alert('### DEBUG: window.Onload');
 		    windowOnloadFunction();
 		}
 		function windowOnloadFunction() {
-		    alert('### DEBUG: windowOnloadFunction');
-		    makeJobsDraggable();
+		    //alert('### DEBUG: windowOnloadFunction');
+		    maketasksDraggable();
 		    makeDropAreasDroppable();
-		    attachExisting();
 		}
-		function makeJobsDraggable() {
-		    alert('### DEBUG: makeJobsDraggable');
-		    // Make all jobs on the page draggable
+		function maketasksDraggable() {
+		    //alert('### DEBUG: maketasksDraggable');
+		    // Make all tasks on the page draggable
 		    $$('div.draggable').each(
 		        function(item) {
 		            new Draggable( item, {revert: true, ghosting: false, scroll: window} );
@@ -26,7 +25,7 @@
 		    );
 		}
 		function makeDropAreasDroppable() {
-		    alert('### DEBUG: makeDropAreasDroppable');
+		    //alert('### DEBUG: makeDropAreasDroppable');
 		    // Make all the drop areas droppable
 		    $$('div.dropArea').each(
 		        function(item) {
@@ -50,11 +49,11 @@
 		function updateRecord(draggable, dropArea) {
 		    alert('### DEBUG: updateRecord');
 		    var bolSuccess = false;
-			// Obtain job id from draggable
-			var jobId = draggable.id;
+			// Obtain task id from draggable
+			var taskId = draggable.id;
 		    // Obtain id from drop area and break into OwnerId and Timeslot values
 		    var strDropAreaId = dropArea.id
-		    alert('##DEBUG: strDropAreaId: ' + strDropAreaId);
+		    //alert('##DEBUG: strDropAreaId: ' + strDropAreaId);
 		    var strArray = strDropAreaId.split('~');
 		    var strOwnerId = strArray[0];
 		    var strTimeSlot = strArray[1];
@@ -63,19 +62,19 @@
 		        // Allow the move but do not update the record
 		        bolSuccess = true;
 		    }
-		    else if (strOwnerId == 'unassignedJobs') {
-		    	alert('#### DEBUG-TODO:Change the owner to the current user, remove the booked time, change status back to Unbooked');
+		    else if (strOwnerId == 'unassignedtasks') {
+		    	//alert('#### DEBUG-TODO:Change the owner to the current user, remove the booked time, change status back to Unbooked');
 		    	bolSuccess = true;
 		    }
-		    else if ((jobId != "") && (strOwnerId != "") && (strTimeSlot != "")) {
+		    else if ((taskId != "") && (strOwnerId != "") && (strTimeSlot != "")) {
 		        var newOwnerId = strOwnerId;
 		        var newDateTime = strTimeSlot;
-		        alert('##DEBUG: jobId / newOwnerId / newDateTime: ' + jobId + ' / ' + newOwnerId + ' / ' + newDateTime);
-		        updateRecordController(jobId, newOwnerId, newDateTime);
+		        //alert('##DEBUG: taskId / newOwnerId / newDateTime: ' + taskId + ' / ' + newOwnerId + ' / ' + newDateTime);
+		        updateRecordController(taskId, newOwnerId, newDateTime);
 		        bolSuccess = true;
 		    } else {
 		        // Prevent move and advise user
-		        alert('Unable to process information. Returning job to original booking.');
+		        alert('Unable to process information. Returning task to original booking.');
 		        bolSuccess = false;
 		    }
 		    return bolSuccess;
