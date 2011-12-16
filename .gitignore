@@ -1,7 +1,14 @@
 salesforce.schema
-/Reference\ Packages
+.settings/*
 .project
 .DS_Store*
 ehthumbs.db
 Icon?
 Thumbs.db
+Referenced Packages/Informatica Data Loader/applications/*
+Referenced Packages/Informatica Data Loader/documents/*
+Referenced Packages/Informatica Data Loader/*
+Referenced Packages/Trineo NZ Postcode Lookup/classes/*
+Referenced Packages/Trineo NZ Postcode Lookup/objects/*
+Referenced Packages/Trineo NZ Postcode Lookup/*
+Referenced Packages/Trineo NZ Postcode Lookup/pages/*
