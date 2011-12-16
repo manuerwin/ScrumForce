@@ -6,28 +6,30 @@
 	<!-- NOTE: The underscore between taskStatus and task.id is essential for sortable.serialize -->
 
    	<div id="work{!work.theWork.Id}" class="row">
-		<div id="taskWork" class="cell handle">
-			<div id="workName" >{!work.theWork.Work_Number__c} {!work.theWork.Name}</div>
+		<div class="cell taskInfo">
+			{!work.theWork.Work_Number__c} {!work.theWork.Name}
 		</div>
-		<div id="toDo~{!work.theWork.Id}" class="cell dropArea">
-			<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
-	   			<div id="taskToDo_{!task.Id}" class="task" >{!task.Name}</div>
-	    	</apex:repeat>
-		</div>
-		<div id="doing~{!work.theWork.Id}" class="cell dropArea">
-			<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
-	   			<div id="taskDoing_{!task.Id}" class="task" >{!task.Name}</div>
-	    	</apex:repeat>
-		</div>
-		<div id="verify~{!work.theWork.Id}" class="cell dropArea">
-			<apex:repeat id="tasksVerify" value="{!work.listTasksVerify}" var="task">
-	   			<div id="taskVerify_{!task.Id}" class="task" >{!task.Name}</div>
-	    	</apex:repeat>
-		</div>
-		<div id="done~{!work.theWork.Id}" class="cell dropArea">
-			<apex:repeat id="tasksDone" value="{!work.listTasksDone}" var="task">
-	   			<div id="taskDone_{!task.Id}" class="task" >{!task.Name}</div>
-	    	</apex:repeat>
+		<div class="taskStatuses" >
+			<div id="toDo~{!work.theWork.Id}" class="cell dropArea">
+				<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
+		   			<div id="taskToDo_{!task.Id}" class="task taskActive" >{!task.Name}</div>
+		    	</apex:repeat>
+			</div>
+			<div id="doing~{!work.theWork.Id}" class="cell dropArea">
+				<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
+		   			<div id="taskDoing_{!task.Id}" class="task" >{!task.Name}</div>
+		    	</apex:repeat>
+			</div>
+			<div id="verify~{!work.theWork.Id}" class="cell dropArea">
+				<apex:repeat id="tasksVerify" value="{!work.listTasksVerify}" var="task">
+		   			<div id="taskVerify_{!task.Id}" class="task" >{!task.Name}</div>
+		    	</apex:repeat>
+			</div>
+			<div id="done~{!work.theWork.Id}" class="cell dropArea">
+				<apex:repeat id="tasksDone" value="{!work.listTasksDone}" var="task">
+		   			<div id="taskDone_{!task.Id}" class="task" >{!task.Name}</div>
+		    	</apex:repeat>
+			</div>
 		</div>
 	</div>
 
@@ -47,10 +49,10 @@
 //			});
 //		};
 		
-		Sortable.create('toDo~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', constraint: false, onUpdate: updateRecord});
-		Sortable.create('doing~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', constraint: false, onUpdate: updateRecord});
-		Sortable.create('verify~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', constraint: false, onUpdate: updateRecord});
-		Sortable.create('done~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', constraint: false, onUpdate: updateRecord});
+		Sortable.create('toDo~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
+		Sortable.create('doing~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
+		Sortable.create('verify~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
+		Sortable.create('done~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
 	// ]]>
 	</script>
 </apex:component>

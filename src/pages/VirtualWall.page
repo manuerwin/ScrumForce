@@ -22,12 +22,14 @@
 
 	<article>
 	    <div id="container" >
-	    	<div id="scrum-header" class="headerRow">
-				<div id="header-stories" class="cell" >Work</div>
-				<div id="header-toDo" class="cell" >To Do</div>
-				<div id="header-inProgress" class="cell" >In Progress</div>
-				<div id="header-verify" class="cell" >Verify</div>
-				<div id="header-done" class="cell" >Done</div>
+	    	<div id="scrumHeader" class="headerRow">
+				<div id="headerWork" class="cell" >Work</div>
+				<div id="headerStatuses" class="">
+					<div id="headerToDo" class="cell headerCell" >To Do</div>
+					<div id="headerInProgress" class="cell headerCell" >In Progress</div>
+					<div id="headerVerify" class="cell headerCell" >Verify</div>
+					<div id="headerDone" class="cell headerCell" >Done</div>
+				</div>
 			</div>
 		    <div id="repeatWorks" >
 			    <apex:repeat id="works" value="{!listWorkAndTasks}" var="workAndTasks">

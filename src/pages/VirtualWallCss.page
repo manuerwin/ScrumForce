@@ -16,7 +16,6 @@
 		.cell {
 			float: left;
 			text-align: center;
-			width: 20%;
 		}
 		.container {
 			width: 99%;
@@ -25,19 +24,42 @@
 			background: grey;
 		}
 		.dropArea {
-			background-color: yellow;
+			border-radius: 10px;
 			min-height: 60px;
+			width: 25%;
+		}
+		.taskInfo {
+			width: 10%;
+		}
+		.headerCell {
+			width: 25%;
 		}
 		.headerRow {
 			background-color: light-grey;
 			clear: left;
+			width: 100%;
+		}
+		#headerStatuses {
+			overflow: auto;
+			width: 90%;
+		}
+		#headerWork {
+			width: 10%;
 		}
 		.row {
 			border: 2px solid #666666;
-			background-color: light-grey;
+			border-radius: 10px;
+			Xbackground-color: #0066CC;
 			clear: left;
+			margin: 1px;
 			min-height: 60px;
-			overflow: hidden;
+			overflow-x: hidden;
+			overflow-y: auto;
+			padding: 2px;
+		}
+		.taskStatuses {
+			overflow: auto;
+			width: 90%;
 		}
 		.task {
 			background-color: #ccc;
@@ -48,13 +70,25 @@
 			float: left;
 			font-size: small;
 			height: 50px;
-			margin-right: 5px;
+			margin: 1px;
 			text-align: center;
-			width: 50px;
+			overflow: hidden;
+			padding: 2px;
+			width: 45%;
 			z-index: 3;
 			-moz-border-radius: 10px;
 			-webkit-border-radius: 10px;
 			-webkit-box-shadow: inset 0 0 3px #000;
+		}
+		.taskActive {
+			box-shadow: 10px 10px 5px #888888;
+			-webkit-box-shadow: 10px 10px 5px #888888; /* Safari */
+			transform: rotate(3deg);
+			-ms-transform: rotate(3deg); /* IE 9 */
+			-webkit-transform: rotate(3deg); /* Safari and Chrome */
+			-o-transform: rotate(3deg); /* Opera */
+			-moz-transform: rotate(3deg); /* Firefox */
+			z-index: 1000;
 		}
 	</style>
 </apex:page>
