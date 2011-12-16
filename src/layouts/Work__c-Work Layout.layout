@@ -27,6 +27,10 @@
                 <behavior>Edit</behavior>
                 <field>Rank__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Work_Rank__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -100,12 +104,12 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Task_Id__c</fields>
-        <fields>Description__c</fields>
         <fields>Estimated_Hours__c</fields>
         <fields>Remaining_Hours__c</fields>
-        <fields>Status__c</fields>
+        <fields>Task_Rank__c</fields>
         <relatedList>Work_Task__c.Work__c</relatedList>
+        <sortField>Task_Rank__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

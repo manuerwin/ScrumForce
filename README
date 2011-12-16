@@ -9,6 +9,10 @@ Various records can be entered to portray the types information within a SCRUM t
 
 The system takes care of regular snapshots of rolled up Sprint information (i.e., remaining points and hours) which are stored as 'Sprint Burndowns' and then charted on the Sprint page layout.
 
+If you need to run the snapshot code adhoc (it will only ever create maximum one record per day per SPrint):
+SprintBurndownNightlyRollup sbnr = new SprintBurndownNightlyRollup();
+System.Database.executeBatch(sbnr);
+
 As much as possible standard Salesforce platform functionality has been used to create this application and Apex development has been only used as necessary.
 
 IN PROGRESS:
