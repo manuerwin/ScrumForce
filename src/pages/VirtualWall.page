@@ -1,4 +1,4 @@
-<apex:page standardController="Work_Task__c" extensions="VirtualWall_VfExt" >
+<apex:page standardController="Sprint__c" extensions="VirtualWall_VfExt" >
 	<apex:include pagename="VirtualWallCss" />
 	<script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/lib/prototype.js')}"
 		type="text/javascript" />
@@ -6,93 +6,39 @@
 		type="text/javascript" />
 
 	<script type="text/javascript">
-		window.onload = function() {
-		    //alert('### DEBUG: window.Onload');
-		    windowOnloadFunction();
-		}
-		function windowOnloadFunction() {
-		    //alert('### DEBUG: windowOnloadFunction');
-		    maketasksDraggable();
-		    makeDropAreasDroppable();
-		}
-		function maketasksDraggable() {
-		    //alert('### DEBUG: maketasksDraggable');
-		    // Make all tasks on the page draggable
-		    $$('div.draggable').each(
-		        function(item) {
-		            new Draggable( item, {revert: true, ghosting: false, scroll: window} );
-		        }
-		    );
-		}
-		function makeDropAreasDroppable() {
-		    //alert('### DEBUG: makeDropAreasDroppable');
-		    // Make all the drop areas droppable
-		    $$('div.dropArea').each(
-		        function(item) {
-		            Droppables.add( item, {hoverclass: 'hoverActive', onDrop: moveItem} );
-		        }
-		    );
-		}
-		function moveItem(draggable, dropArea){
-			alert('### DEBUG: moveItem');
-			var originalParent = draggable.parentNode;
-			draggable.parentNode.removeChild(draggable);
-			dropArea.appendChild(draggable);
-			// Update record with new owner and date time
-			var bolSuccess = updateRecord(draggable, dropArea);
-			if (!bolSuccess) {
-				// Return record to original drop area
-				draggable.parentNode.removeChild(draggable);
-				originalParent.appendChild(draggable);
-			}
-		}
-		function updateRecord(draggable, dropArea) {
-		    alert('### DEBUG: updateRecord');
+		function updateRecord(container) {
 		    var bolSuccess = false;
-			// Obtain task id from draggable
-			var taskId = draggable.id;
-		    // Obtain id from drop area and break into OwnerId and Timeslot values
-		    var strDropAreaId = dropArea.id
-		    //alert('##DEBUG: strDropAreaId: ' + strDropAreaId);
-		    var strArray = strDropAreaId.split('~');
-		    var strOwnerId = strArray[0];
-		    var strTimeSlot = strArray[1];
-		
-		    if (strOwnerId == 'scratchPad') {
-		        // Allow the move but do not update the record
-		        bolSuccess = true;
-		    }
-		    else if (strOwnerId == 'unassignedtasks') {
-		    	//alert('#### DEBUG-TODO:Change the owner to the current user, remove the booked time, change status back to Unbooked');
-		    	bolSuccess = true;
-		    }
-		    else if ((taskId != "") && (strOwnerId != "") && (strTimeSlot != "")) {
-		        var newOwnerId = strOwnerId;
-		        var newDateTime = strTimeSlot;
-		        //alert('##DEBUG: taskId / newOwnerId / newDateTime: ' + taskId + ' / ' + newOwnerId + ' / ' + newDateTime);
-		        updateRecordController(taskId, newOwnerId, newDateTime);
-		        bolSuccess = true;
-		    } else {
-		        // Prevent move and advise user
-		        alert('Unable to process information. Returning task to original booking.');
-		        bolSuccess = false;
-		    }
+		    var strSerializedContainer = Sortable.serialize(container);
+		    //alert('### DEBUG: serialize: ' + strSerializedContainer);
+		    VirtualWall_VfExt.updateTasks(strSerializedContainer, function(result, event) {
+	    		//alert ('### DEBUG: callbackFunction');
+			});
 		    return bolSuccess;
+		}
+		function theCallbackFunction() {
+    		alert ('### DEBUG: callbackFunction'); 
 		}
 	</script>
 
 	<article>
-	    <apex:outputPanel id="container" layout="block">
-	    	<apex:outputPanel id="scrum-header" layout="block" styleClass="headerRow">
-				<apex:outputPanel id="header-stories" layout="block" styleclass="cell" >Work</apex:outputPanel>
-				<apex:outputPanel id="header-toDo" layout="block" styleclass="cell" >To Do</apex:outputPanel>
-				<apex:outputPanel id="header-inProgress" layout="block" styleclass="cell" >In Progress</apex:outputPanel>
-				<apex:outputPanel id="header-verify" layout="block" styleclass="cell" >Verify</apex:outputPanel>
-				<apex:outputPanel id="header-done" layout="block" styleclass="cell" >Done</apex:outputPanel>
-			</apex:outputPanel>
-		    <apex:repeat id="works" value="{!listWorkAndTasks}" var="workAndTasks">
-		    	<c:VirtualWallWork work="{!workAndTasks}" />
-		    </apex:repeat>
-		</apex:outputPanel>
+	    <div id="container" >
+	    	<div id="scrum-header" class="headerRow">
+				<div id="header-stories" class="cell" >Work</div>
+				<div id="header-toDo" class="cell" >To Do</div>
+				<div id="header-inProgress" class="cell" >In Progress</div>
+				<div id="header-verify" class="cell" >Verify</div>
+				<div id="header-done" class="cell" >Done</div>
+			</div>
+		    <div id="repeatWorks" >
+			    <apex:repeat id="works" value="{!listWorkAndTasks}" var="workAndTasks">
+			    	<c:VirtualWallWork work="{!workAndTasks}" />
+			    </apex:repeat>
+		    </div>
+		</div>
 	</article>
+	<script type="text/javascript">
+		// <![CDATA[
+		Sortable.create('repeatWorks',{tag:'span'});
+		// ]]>
+	</script>
 </apex:page>

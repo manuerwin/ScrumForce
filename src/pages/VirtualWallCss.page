@@ -13,17 +13,6 @@
 		*:-khtml-drag {
 			background-color: rgba(238,238,238, 0.5);
 		}
-		#bin {
-			background-color: red;
-			height: 50px;
-			width: 100px;
-			float: left;
-			position: relative;
-			margin-top: 0;
-		}
-		#bin.over {
-			border: 5px solid #000;
-		}
 		.cell {
 			float: left;
 			text-align: center;
@@ -35,11 +24,7 @@
 		div.hoverActive {
 			background: grey;
 		}
-		div.JSON {
-			font-size: 1%;
-			visibility: hidden;
-		}
-		.dropzone {
+		.dropArea {
 			background-color: yellow;
 			min-height: 60px;
 		}
@@ -52,6 +37,7 @@
 			background-color: light-grey;
 			clear: left;
 			min-height: 60px;
+			overflow: hidden;
 		}
 		.task {
 			background-color: #ccc;

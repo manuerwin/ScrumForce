@@ -39,33 +39,42 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject>,
     global void execute(Database.BatchableContext BC, List<Work__c> listWorks) {
     System.debug(System.LoggingLevel.DEBUG, '##DEBUG: execute');
         // loop through Work records
-        for (Work__c work : listWorks) {
-            Sprint_Burndown__c sprintBurndown;
-            // obtain SprintBurndown from map (using Work.SprintId) or
-            // create if first time (default rollup fields to zero and date to today)
-            if (mapSprintIdToSprintBurndown.containsKey(work.Sprint__c)) {
-                sprintBurndown = mapSprintIdToSprintBurndown.get(work.Sprint__c);
-                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: sprintBurndown obtained from map:' + sprintBurndown);
-            } else {
-                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: Create new sprintBurndown');
-                // Note: Setting the Unique field so can upsert existing records
-                sprintBurndown = new Sprint_Burndown__c(Sprint__c = work.Sprint__c, Date__c = System.today(),
-                                Total_Points_Remaining__c = 0, Total_Hours_Remaining__c = 0,
-                                Unique_Sprint_Burndown__c = work.Sprint__c + '-' + String.valueOf(System.today()));
-            }
-
-            // add Work Story Points to SprintBurndown
-            sprintBurndown.Total_Points_Remaining__c += work.Story_Points__c;
-
-            // loop child Work Tasks
-            for (Work_Task__c workTask : work.Work_Tasks__r) {
-                // add Hours Remaining to SprintBurndown
-                sprintBurndown.Total_Hours_Remaining__c += workTask.Remaining_Hours__c;
-            }
-
-            // put SprintBurndown (back) into Map
-            System.debug(System.LoggingLevel.DEBUG, '##DEBUG: sprintBurndown before put into map: ' + sprintBurndown);
-            mapSprintIdToSprintBurndown.put(work.Sprint__c, sprintBurndown);
+        if (!listWorks.isEmpty() ) {
+            System.debug(System.LoggingLevel.DEBUG, '##DEBUG: number of records to process:' + listWorks.size());
+	        for (Work__c work : listWorks) {
+	            Sprint_Burndown__c sprintBurndown;
+	            // obtain SprintBurndown from map (using Work.SprintId) or
+	            // create if first time (default rollup fields to zero and date to today)
+	            if (mapSprintIdToSprintBurndown.containsKey(work.Sprint__c)) {
+	                sprintBurndown = mapSprintIdToSprintBurndown.get(work.Sprint__c);
+	                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: sprintBurndown obtained from map:' + sprintBurndown);
+	            } else {
+	                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: Create new sprintBurndown');
+	                // Note: Setting the Unique field so can upsert existing records
+	                sprintBurndown = new Sprint_Burndown__c(Sprint__c = work.Sprint__c, Date__c = System.today(),
+	                                Total_Points_Remaining__c = 0, Total_Hours_Remaining__c = 0,
+	                                Unique_Sprint_Burndown__c = work.Sprint__c + '-' + String.valueOf(System.today()));
+	            }
+	
+	            if (work.Story_Points__c != null) {
+		            // add Work Story Points to SprintBurndown
+		            sprintBurndown.Total_Points_Remaining__c += work.Story_Points__c;
+	            }
+	
+	            // loop child Work Tasks
+	            for (Work_Task__c workTask : work.Work_Tasks__r) {
+		            if (workTask.Remaining_Hours__c != null) {
+		                // add Hours Remaining to SprintBurndown
+		                sprintBurndown.Total_Hours_Remaining__c += workTask.Remaining_Hours__c;
+		            }
+	            }
+	
+	            // put SprintBurndown (back) into Map
+	            System.debug(System.LoggingLevel.DEBUG, '##DEBUG: sprintBurndown before put into map: ' + sprintBurndown);
+	            mapSprintIdToSprintBurndown.put(work.Sprint__c, sprintBurndown);
+	        }
+        } else {
+	        System.debug(System.LoggingLevel.DEBUG, '##DEBUG: zero records to process:' + listWorks.size());
         }
     }
 

@@ -21,6 +21,10 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>WorkTaskBeforeInsertUpdate</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
         <members>Scrumforce</members>
         <name>CustomApplication</name>
     </types>

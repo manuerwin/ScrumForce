@@ -26,6 +26,15 @@ public class WorkAndTasks {
         }
         set;
     }
+    public List<Work_Task__c> listTasksVerify {
+        get {
+            if (listTasksVerify == null) {
+                listTasksVerify = new List<Work_Task__c>();
+            }
+            return listTasksVerify;
+        }
+        set;
+    }
     public List<Work_Task__c> listTasksDone {
         get {
             if (listTasksDone == null) {
