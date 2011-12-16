@@ -7,11 +7,9 @@ Various records can be entered to portray the types information within a SCRUM t
 	- Work Task - Sprint Backlog Tasks for a piece of Work.
 	- Sprint - A collection of pieces of Work to be worked on over a period of time.
 
-The system takes care of regular snapshots of rolled up Sprint information (i.e., remaining points and hours)
-which are stored as 'Sprint Burndowns' and then charted on the Sprint page layout.
+The system takes care of regular snapshots of rolled up Sprint information (i.e., remaining points and hours) which are stored as 'Sprint Burndowns' and then charted on the Sprint page layout.
 
-As much as possible standard Salesforce platform functionality has been used to create this application and Apex
-development has been only used as necessary.
+As much as possible standard Salesforce platform functionality has been used to create this application and Apex development has been only used as necessary.
 
 IN PROGRESS:
 	- A Virtual Wall to drag and drop Work Tasks to update status as well as edit Work Task information
