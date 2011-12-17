@@ -7,27 +7,44 @@
 
    	<div id="work{!work.theWork.Id}" class="row">
 		<div class="cell taskInfo">
-			{!work.theWork.Work_Number__c} {!work.theWork.Name}
+			<h2>{!work.theWork.Work_Number__c} {!work.theWork.Name}</h2>
+			({!work.theWork.Owner.Alias})
 		</div>
 		<div class="taskStatuses" >
 			<div id="toDo~{!work.theWork.Id}" class="cell dropArea">
+				<div id="headerToDo" class="cell headerCell" >  <h2>To Do</h2>  </div>
 				<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
-		   			<div id="taskToDo_{!task.Id}" class="task taskActive" >{!task.Name}</div>
+		   			<div id="taskToDo_{!task.Id}" class="task taskActive" >
+		   				<div class="taskTitle" > {!task.Name} </div>
+		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+	   				</div>
 		    	</apex:repeat>
 			</div>
 			<div id="doing~{!work.theWork.Id}" class="cell dropArea">
+				<div id="headerInProgress" class="cell headerCell" >  <h2>In Progress</h2>  </div>
 				<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
-		   			<div id="taskDoing_{!task.Id}" class="task" >{!task.Name}</div>
+		   			<div id="taskDoing_{!task.Id}" class="task" >
+						<div class="taskTitle" > {!task.Name} </div>
+		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+	   				</div>
 		    	</apex:repeat>
 			</div>
 			<div id="verify~{!work.theWork.Id}" class="cell dropArea">
+				<div id="headerVerify" class="cell headerCell" >  <h2>Verify</h2>  </div>
 				<apex:repeat id="tasksVerify" value="{!work.listTasksVerify}" var="task">
-		   			<div id="taskVerify_{!task.Id}" class="task" >{!task.Name}</div>
+		   			<div id="taskVerify_{!task.Id}" class="task" >
+		   				<div class="taskTitle" > {!task.Name} </div>
+		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+	   				</div>
 		    	</apex:repeat>
 			</div>
 			<div id="done~{!work.theWork.Id}" class="cell dropArea">
+				<div id="headerDone" class="cell headerCell" >  <h2>Done</h2>  </div>
 				<apex:repeat id="tasksDone" value="{!work.listTasksDone}" var="task">
-		   			<div id="taskDone_{!task.Id}" class="task" >{!task.Name}</div>
+		   			<div id="taskDone_{!task.Id}" class="task" >
+		   				<div class="taskTitle" > {!task.Name} </div>
+		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+	   				</div>
 		    	</apex:repeat>
 			</div>
 		</div>

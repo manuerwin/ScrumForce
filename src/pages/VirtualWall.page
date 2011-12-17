@@ -22,15 +22,6 @@
 
 	<article>
 	    <div id="container" >
-	    	<div id="scrumHeader" class="headerRow">
-				<div id="headerWork" class="cell" >Work</div>
-				<div id="headerStatuses" class="">
-					<div id="headerToDo" class="cell headerCell" >To Do</div>
-					<div id="headerInProgress" class="cell headerCell" >In Progress</div>
-					<div id="headerVerify" class="cell headerCell" >Verify</div>
-					<div id="headerDone" class="cell headerCell" >Done</div>
-				</div>
-			</div>
 		    <div id="repeatWorks" >
 			    <apex:repeat id="works" value="{!listWorkAndTasks}" var="workAndTasks">
 			    	<c:VirtualWallWork work="{!workAndTasks}" />
