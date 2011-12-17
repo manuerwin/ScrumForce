@@ -31,6 +31,10 @@
                 <behavior>Readonly</behavior>
                 <field>Work_Rank__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Theme__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -106,6 +110,8 @@
         <fields>NAME</fields>
         <fields>Estimated_Hours__c</fields>
         <fields>Remaining_Hours__c</fields>
+        <fields>Status__c</fields>
+        <fields>OWNER.ALIAS</fields>
         <fields>Task_Rank__c</fields>
         <relatedList>Work_Task__c.Work__c</relatedList>
         <sortField>Task_Rank__c</sortField>

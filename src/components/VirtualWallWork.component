@@ -9,6 +9,9 @@
 		<div class="cell taskInfo">
 			<h2>{!work.theWork.Work_Number__c} {!work.theWork.Name}</h2>
 			({!work.theWork.Owner.Alias})
+			<apex:outputLink value="/a0o/e?CF00N60000002NaOs={!work.theWork.Name}&CF00N60000002NaOs_lkid={!work.theWork.Id}&retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
+ 				New Task
+ 			</apex:outputLink>
 		</div>
 		<div class="taskStatuses" >
 			<div id="toDo~{!work.theWork.Id}" class="cell dropArea">
@@ -47,7 +50,6 @@
 			</div>
 			<div id="verify~{!work.theWork.Id}" class="cell dropArea">
 				<div id="headerVerify" class="cell headerCell" >  <h2>Verify</h2>  </div>
-	   			<div class="task" >Placeholder to allow drop on empty</div>
 				<apex:repeat id="tasksVerify" value="{!work.listTasksVerify}" var="task">
 		   			<div id="taskVerify_{!task.Id}" class="task" >
 		   				<div class="taskTitle" > {!task.Name} </div>
@@ -90,7 +92,6 @@
 
 		// TODO: handle
 		sections.each(function (id) {
-			alert('section: ' + id);
 			Sortable.create(id, { 	tag: 'div', only: 'task', constraint: false, hoverclass: 'hoverActive',
 									dropOnEmpty: true, containment: sections, overlap: 'horizontal',
 									onUpdate: updateRecord}
