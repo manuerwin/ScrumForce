@@ -5,6 +5,8 @@
 	<script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/src/scriptaculous.js')}"
 		type="text/javascript" />
 
+	<link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css" />
+
 	<script type="text/javascript">
 		function updateRecord(container) {
 		    var bolSuccess = false;
@@ -14,9 +16,6 @@
 	    		//alert ('### DEBUG: callbackFunction');
 			});
 		    return bolSuccess;
-		}
-		function theCallbackFunction() {
-    		alert ('### DEBUG: callbackFunction'); 
 		}
 	</script>
 

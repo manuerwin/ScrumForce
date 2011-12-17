@@ -11,9 +11,9 @@ public with sharing class VirtualWall_VfExt {
         get {
             if (listWorkAndTasks == null) {
 			    listWorkAndTasks = new List<WorkAndTasks>();
-                // TODO: filter this by the target sprint
-                for (Work__c oneWork : [SELECT Id, Name, Work_Number__c, Owner.Alias,
-	                						(SELECT Id, Name, Description__c, Status__c, Owner.Alias
+                for (Work__c oneWork : [SELECT Id, Name, Work_Number__c, Owner.Alias, Sprint__c,
+	                						(SELECT Id, Name, Description__c,
+	                						Status__c, Owner.Alias, Remaining_Hours__c
 	                						FROM Work_Tasks__r ORDER BY Rank__c ASC)
                             			FROM Work__c
                             			WHERE Sprint__c = :sprint.Id

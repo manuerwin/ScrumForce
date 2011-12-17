@@ -16,7 +16,15 @@
 				<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
 		   			<div id="taskToDo_{!task.Id}" class="task taskActive" >
 		   				<div class="taskTitle" > {!task.Name} </div>
-		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+		   				<div class="taskOwner">{!task.Owner.Alias}</div>
+		   				<div class="taskLink" >
+			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
+			   					CHANGE
+			   				</apex:outputLink>
+		   				</div>
+		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+							<apex:param value="{!task.Remaining_Hours__c}" />
+						</apex:outputText>
 	   				</div>
 		    	</apex:repeat>
 			</div>
@@ -25,16 +33,33 @@
 				<apex:repeat id="tasksDoing" value="{!work.listTasksDoing}" var="task">
 		   			<div id="taskDoing_{!task.Id}" class="task" >
 						<div class="taskTitle" > {!task.Name} </div>
-		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+		   				<div class="taskOwner">{!task.Owner.Alias}</div>
+		   				<div class="taskLink" >
+			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
+			   					CHANGE
+			   				</apex:outputLink>
+		   				</div>
+		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+							<apex:param value="{!task.Remaining_Hours__c}" />
+						</apex:outputText>
 	   				</div>
 		    	</apex:repeat>
 			</div>
 			<div id="verify~{!work.theWork.Id}" class="cell dropArea">
 				<div id="headerVerify" class="cell headerCell" >  <h2>Verify</h2>  </div>
+	   			<div class="task" >Placeholder to allow drop on empty</div>
 				<apex:repeat id="tasksVerify" value="{!work.listTasksVerify}" var="task">
 		   			<div id="taskVerify_{!task.Id}" class="task" >
 		   				<div class="taskTitle" > {!task.Name} </div>
-		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+		   				<div class="taskOwner">{!task.Owner.Alias}</div>
+		   				<div class="taskLink" >
+			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
+			   					CHANGE
+			   				</apex:outputLink>
+		   				</div>
+		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+							<apex:param value="{!task.Remaining_Hours__c}" />
+						</apex:outputText>
 	   				</div>
 		    	</apex:repeat>
 			</div>
@@ -43,7 +68,15 @@
 				<apex:repeat id="tasksDone" value="{!work.listTasksDone}" var="task">
 		   			<div id="taskDone_{!task.Id}" class="task" >
 		   				<div class="taskTitle" > {!task.Name} </div>
-		   				<div class="taskOwner"> {!task.Owner.Alias} </div>
+		   				<div class="taskOwner">{!task.Owner.Alias}</div>
+		   				<div class="taskLink" >
+			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
+			   					CHANGE
+			   				</apex:outputLink>
+		   				</div>
+		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+							<apex:param value="{!task.Remaining_Hours__c}" />
+						</apex:outputText>
 	   				</div>
 		    	</apex:repeat>
 			</div>
@@ -54,22 +87,15 @@
 	// <![CDATA[
 		var sections = ['toDo~{!work.theWork.Id}', 'doing~{!work.theWork.Id}',
 			'verify~{!work.theWork.Id}', 'done~{!work.theWork.Id}'];
-		// TODO: handle, hoverclass
 
-// TODO: get this function working
-//		function (event) {
-//			sections.each(function (id) {
-//				Sortable.create(id, { 	tag: 'div', only: 'task', constraint: false,
-//										dropOnEmpty: true, containment: sections, overlap: 'horizontal',
-//										onUpdate: updateRecord}
-//				);
-//			});
-//		};
-		
-		Sortable.create('toDo~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
-		Sortable.create('doing~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
-		Sortable.create('verify~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
-		Sortable.create('done~{!work.theWork.Id}', {tag:'div', only:'task', dropOnEmpty: true, containment: sections, overlap: 'horizontal', hoverclass: 'hoverActive', constraint: false, onUpdate: updateRecord});
+		// TODO: handle
+		sections.each(function (id) {
+			alert('section: ' + id);
+			Sortable.create(id, { 	tag: 'div', only: 'task', constraint: false, hoverclass: 'hoverActive',
+									dropOnEmpty: true, containment: sections, overlap: 'horizontal',
+									onUpdate: updateRecord}
+			);
+		});
 	// ]]>
 	</script>
 </apex:component>
