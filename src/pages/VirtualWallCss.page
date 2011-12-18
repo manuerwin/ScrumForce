@@ -29,7 +29,7 @@
 			-moz-border-radius: 3px;
 			-webkit-border-radius: 3px;
 			margin: 2px;
-			min-height: 74px;
+			min-height: 50px;
 			overflow: hidden;
 			padding-left: 4px;
 			padding-right: 2px;
@@ -98,9 +98,9 @@
 			-webkit-box-shadow: inset 0 0 3px #000;
 			cursor: move;
 			float: left;
-			font-family:"Reenie Beanie",arial,sans-serif;  
-			font-size:180%;
-			Xfont-size: small;
+			Xfont-family:"Reenie Beanie",arial,sans-serif;  
+			Xfont-size:180%;
+			font-size: small;
 			margin: 1px;
 			text-align: center;
 			overflow: hidden;
