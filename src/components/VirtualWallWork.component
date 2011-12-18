@@ -6,6 +6,7 @@
 	<!-- NOTE: The underscore between taskStatus and task.id is essential for sortable.serialize -->
 
    	<div id="work{!work.theWork.Id}" class="row">
+		<div class="dragHandle" >=</div>
 		<div class="cell taskInfo">
 			<apex:outputLink value="/{!work.theWork.Id}" target="_parent" >
 				<h2>{!work.theWork.Work_Number__c} {!work.theWork.Name}</h2>
@@ -96,7 +97,7 @@
 	<script type="text/javascript">
 	// <![CDATA[
 		var sections = ['toDo~{!work.theWork.Id}', 'doing~{!work.theWork.Id}',
-			'verify~{!work.theWork.Id}', 'done~{!work.theWork.Id}'];
+						'verify~{!work.theWork.Id}', 'done~{!work.theWork.Id}'];
 
 		sections.each(function (id) {
 			Sortable.create(id, { 	tag: 'div', only: 'task', constraint: false, hoverclass: 'hoverActive',

@@ -28,8 +28,13 @@
 		</div>
 	</article>
 	<script type="text/javascript">
-		// <![CDATA[
-		Sortable.create('repeatWorks',{tag:'span'});
-		// ]]>
+	// <![CDATA[
+		var repeatWorks = ['repeatWorks'];
+
+		repeatWorks.each(function (id) {
+			alert('would like to make works sortable-inside');
+			Sortable.create(id, { tag: 'div', only: 'row', constraint: false, overlap: 'vertical', handle: 'dragHandle'});
+		});
+	// ]]>
 	</script>
 </apex:page>
