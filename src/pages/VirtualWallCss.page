@@ -116,7 +116,10 @@
 			-webkit-transform: rotate(3deg); /* Safari and Chrome */
 			-o-transform: rotate(3deg); /* Opera */
 			-moz-transform: rotate(3deg); /* Firefox */
-			z-index: 1000;
+			-moz-transition:-moz-transform .15s linear;
+			-o-transition:-o-transform .15s linear;
+			-webkit-transition:-webkit-transform .15s linear; 
+			z-index: 10;
 		}
 	</style>
 </apex:page>
