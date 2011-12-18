@@ -7,22 +7,30 @@
 
    	<div id="work{!work.theWork.Id}" class="row">
 		<div class="cell taskInfo">
-			<h2>{!work.theWork.Work_Number__c} {!work.theWork.Name}</h2>
-			({!work.theWork.Owner.Alias})
-			<apex:outputLink value="/a0o/e?CF00N60000002NaOs={!work.theWork.Name}&CF00N60000002NaOs_lkid={!work.theWork.Id}&retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
- 				New Task
- 			</apex:outputLink>
+			<apex:outputLink value="/{!work.theWork.Id}" target="_parent" >
+				<h2>{!work.theWork.Work_Number__c} {!work.theWork.Name}</h2>
+			</apex:outputLink>
+			<p>
+				({!work.theWork.Owner.Alias})
+			</p>
+			<p>
+				<apex:outputLink styleClass="newTaskLink" value="/a0o/e?CF00N60000002NaOs={!work.theWork.Name}
+					&CF00N60000002NaOs_lkid={!work.theWork.Id}&retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}"
+					target="_parent" >
+	 				New Task
+	 			</apex:outputLink>
+			</p>
 		</div>
 		<div class="taskStatuses" >
 			<div id="toDo~{!work.theWork.Id}" class="cell dropArea">
 				<div id="headerToDo" class="cell headerCell" >  <h2>To Do</h2>  </div>
 				<apex:repeat id="tasksToDo" value="{!work.listTasksToDo}" var="task">
-		   			<div id="taskToDo_{!task.Id}" class="task taskActive" >
+		   			<div id="taskToDo_{!task.Id}" class="task" >
 		   				<div class="taskTitle" > {!task.Name} </div>
 		   				<div class="taskOwner">{!task.Owner.Alias}</div>
 		   				<div class="taskLink" >
 			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
-			   					CHANGE
+			   					EDIT
 			   				</apex:outputLink>
 		   				</div>
 		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
@@ -39,7 +47,7 @@
 		   				<div class="taskOwner">{!task.Owner.Alias}</div>
 		   				<div class="taskLink" >
 			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
-			   					CHANGE
+			   					EDIT
 			   				</apex:outputLink>
 		   				</div>
 		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
@@ -56,7 +64,7 @@
 		   				<div class="taskOwner">{!task.Owner.Alias}</div>
 		   				<div class="taskLink" >
 			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
-			   					CHANGE
+			   					EDIT
 			   				</apex:outputLink>
 		   				</div>
 		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
@@ -73,7 +81,7 @@
 		   				<div class="taskOwner">{!task.Owner.Alias}</div>
 		   				<div class="taskLink" >
 			   				<apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!work.theWork.Sprint__c}" target="_parent" >
-			   					CHANGE
+			   					EDIT
 			   				</apex:outputLink>
 		   				</div>
 		   				<apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
@@ -90,7 +98,6 @@
 		var sections = ['toDo~{!work.theWork.Id}', 'doing~{!work.theWork.Id}',
 			'verify~{!work.theWork.Id}', 'done~{!work.theWork.Id}'];
 
-		// TODO: handle
 		sections.each(function (id) {
 			Sortable.create(id, { 	tag: 'div', only: 'task', constraint: false, hoverclass: 'hoverActive',
 									dropOnEmpty: true, containment: sections, overlap: 'horizontal',
