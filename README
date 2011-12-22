@@ -1,4 +1,4 @@
-Scrumforce is a Salesforce.com app that provides the ability to manage SCRUM agile projects.
+Scrumforce is a Force.com app on the AppExchange that provides the ability to manage SCRUM agile projects.
 
 Various records can be entered to portray the types information within a SCRUM team namely:
 	- Epic- A large User Story, generally too big to fit into a single Sprint. Useful for high level 'road map'/
