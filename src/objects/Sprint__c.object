@@ -124,7 +124,7 @@
     <webLinks>
         <fullName>Virtual_Wall</fullName>
         <availability>online</availability>
-        <description>Open the Virtual Wall VF page for this Sprint</description>
+        <description>Open the Virtual Wall VF page for the parent Sprint</description>
         <displayType>button</displayType>
         <height>600</height>
         <linkType>page</linkType>

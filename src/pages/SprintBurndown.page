@@ -1,6 +1,6 @@
 <apex:page standardController="Sprint__c" extensions="SprintBurndown_VfExt">
 	<apex:outputPanel id="burndownCharts" layout="block" rendered="{!sprintBurndownsExist}" >
-	<c:LineChart jsondata="{!pointsRemainingOverTime}" 
+	<c:LineChart jsondata="{!pointsRemainingOverTime}"
 	                width="400" height="300" 
 	                title="Points Burndown"
 					enableTooltip="true"
@@ -9,7 +9,7 @@
 	                titleX="Date"
 	                titleY="Points Remaining"
 	                smoothLine="false" />      
-	<c:LineChart jsondata="{!hoursRemainingOverTime}" 
+	<c:LineChart jsondata="{!hoursRemainingOverTime}"
 	                width="400" height="300"
 	                title="Hours Burndown"
 					enableTooltip="true"

@@ -1,0 +1,113 @@
+<apex:component controller="VirtualWallUserStory_VfExt">
+    <apex:attribute name="userStory" type="StoryAndTasks" assignTo="{!oneStoryAndTasks}" required="true"
+        description="The custom Apex class that contains the User Story record and list collections of child
+        User Story Tasks grouped into Task Status" />
+
+    <!-- NOTE: The underscore between taskStatus and task.id is essential for sortable.serialize -->
+
+    <div id="userStory{!userStory.theStory.Id}" class="row">
+        <div class="cell taskInfo">
+            <apex:outputLink value="/{!userStory.theStory.Id}" target="_parent" >
+                <h2>{!userStory.theStory.Story_Number__c} {!userStory.theStory.Name}</h2>
+            </apex:outputLink>
+            <p>
+                ({!userStory.theStory.Owner.Alias})
+            </p>
+            <p>
+                <apex:outputLink styleClass="newTaskLink" value="/a0o/e?CF00N60000002NaOs={!userStory.theStory.Name}
+                    &CF00N60000002NaOs_lkid={!userStory.theStory.Id}&retURL=/apex/VirtualWall?
+                    id={!userStory.theStory.Sprint__c}"
+                    target="_parent" >
+                    New Task
+                </apex:outputLink>
+            </p>
+        </div>
+        <div class="taskStatuses" >
+            <div id="toDo~{!userStory.theStory.Id}" class="cell dropArea dropAreaTask">
+                <div id="headerToDo" class="cell headerCell" >  <h2>To Do</h2>  </div>
+                <apex:repeat id="tasksToDo" value="{!userStory.listTasksToDo}" var="task">
+                    <div id="taskToDo_{!task.Id}" class="draggable task" >
+                        <div class="taskTitle" > {!task.Name} </div>
+                        <div class="taskOwner">{!task.Owner.Alias}</div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
+                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                                EDIT
+                            </apex:outputLink>
+                        </div>
+                        <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+                            <apex:param value="{!task.Remaining_Hours__c}" />
+                        </apex:outputText>
+                    </div>
+                </apex:repeat>
+            </div>
+            <div id="doing~{!userStory.theStory.Id}" class="cell dropArea dropAreaTask">
+                <div id="headerInProgress" class="cell headerCell" >  <h2>In Progress</h2>  </div>
+                <apex:repeat id="tasksDoing" value="{!userStory.listTasksDoing}" var="task">
+                    <div id="taskDoing_{!task.Id}" class="draggable task" >
+                        <div class="taskTitle" > {!task.Name} </div>
+                        <div class="taskOwner">{!task.Owner.Alias}</div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
+                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                                EDIT
+                            </apex:outputLink>
+                        </div>
+                        <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+                            <apex:param value="{!task.Remaining_Hours__c}" />
+                        </apex:outputText>
+                    </div>
+                </apex:repeat>
+            </div>
+            <div id="verify~{!userStory.theStory.Id}" class="cell dropArea dropAreaTask">
+                <div id="headerVerify" class="cell headerCell" >  <h2>Verify</h2>  </div>
+                <apex:repeat id="tasksVerify" value="{!userStory.listTasksVerify}" var="task">
+                    <div id="taskVerify_{!task.Id}" class="draggable task" >
+                        <div class="taskTitle" > {!task.Name} </div>
+                        <div class="taskOwner">{!task.Owner.Alias}</div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
+                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                                EDIT
+                            </apex:outputLink>
+                        </div>
+                        <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+                            <apex:param value="{!task.Remaining_Hours__c}" />
+                        </apex:outputText>
+                    </div>
+                </apex:repeat>
+            </div>
+            <div id="done~{!userStory.theStory.Id}" class="cell dropArea dropAreaTask">
+                <div id="headerDone" class="cell headerCell" >  <h2>Done</h2>  </div>
+                <apex:repeat id="tasksDone" value="{!userStory.listTasksDone}" var="task">
+                    <div id="taskDone_{!task.Id}" class="draggable task" >
+                        <div class="taskTitle" > {!task.Name} </div>
+                        <div class="taskOwner">{!task.Owner.Alias}</div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
+                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                                EDIT
+                            </apex:outputLink>
+                        </div>
+                        <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
+                            <apex:param value="{!task.Remaining_Hours__c}" />
+                        </apex:outputText>
+                    </div>
+                </apex:repeat>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    // <![CDATA[
+        var sections = ['toDo~{!userStory.theStory.Id}', 'doing~{!userStory.theStory.Id}',
+                        'verify~{!userStory.theStory.Id}', 'done~{!userStory.theStory.Id}'];
+        sections.each(function (id) {
+            Sortable.create(id, {   tag: 'div', only: 'draggable', constraint: false, hoverclass: 'hoverActive',
+                                    dropOnEmpty: true, containment: sections, overlap: 'horizontal',
+                                    onUpdate: updateTaskRecords}
+            );
+        });
+    // ]]>
+    </script>
+</apex:component>

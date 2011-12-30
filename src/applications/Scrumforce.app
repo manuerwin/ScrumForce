@@ -8,7 +8,7 @@
     <tab>Theme__c</tab>
     <tab>Epic__c</tab>
     <tab>Sprint__c</tab>
-    <tab>Work__c</tab>
-    <tab>Work_Task__c</tab>
+    <tab>User_Story__c</tab>
+    <tab>User_Story_Task__c</tab>
     <tab>Sprint_Burndown__c</tab>
 </CustomApplication>

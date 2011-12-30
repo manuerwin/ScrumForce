@@ -68,7 +68,6 @@
         <inlineHelpText>The parent Epic for this piece of Work</inlineHelpText>
         <label>Epic</label>
         <referenceTo>Epic__c</referenceTo>
-        <relationshipLabel>Work</relationshipLabel>
         <relationshipName>Work</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -135,7 +134,6 @@
         <inlineHelpText>The Sprint this piece of Work is contained within</inlineHelpText>
         <label>Sprint</label>
         <referenceTo>Sprint__c</referenceTo>
-        <relationshipLabel>Work</relationshipLabel>
         <relationshipName>Work</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -166,6 +164,16 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Story_Number__c</fullName>
+        <description>Unique reference for each piece of work</description>
+        <displayFormat>US-{000}</displayFormat>
+        <externalId>false</externalId>
+        <inlineHelpText>Unique reference for each piece of work</inlineHelpText>
+        <label>Story Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
         <fullName>Story_Points__c</fullName>
         <description>The Story Point value for this piece of Work. Scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100</description>
         <externalId>false</externalId>
@@ -185,38 +193,27 @@
         <inlineHelpText>The Theme that this piece of Work is a part of e.g., Credit Card stories</inlineHelpText>
         <label>Theme</label>
         <referenceTo>Theme__c</referenceTo>
-        <relationshipLabel>Work</relationshipLabel>
         <relationshipName>Work</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Work_Number__c</fullName>
-        <description>Unique reference for each piece of work</description>
-        <displayFormat>W-{000}</displayFormat>
-        <externalId>false</externalId>
-        <inlineHelpText>Unique reference for each piece of work</inlineHelpText>
-        <label>Work Number</label>
-        <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </fields>
-    <fields>
-        <fullName>Work_Rank__c</fullName>
-        <description>CHANGE ME</description>
+        <fullName>User_Story_Rank__c</fullName>
+        <description>Calculated rank of this User Story based on combined Status and Rank. Used for sorting.</description>
         <externalId>false</externalId>
         <formula>TEXT(Status__c) &amp; &apos;-&apos; &amp;  TEXT(Rank__c)</formula>
-        <inlineHelpText>CHANGE ME</inlineHelpText>
-        <label>Work Rank</label>
+        <inlineHelpText>Calculated rank of this User Story based on combined Status and Rank.</inlineHelpText>
+        <label>User Story Rank</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <label>Work</label>
+    <label>User Story</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>Work_Number__c</columns>
+        <columns>Story_Number__c</columns>
         <columns>NAME</columns>
         <columns>Sprint__c</columns>
         <columns>Story_Points__c</columns>
@@ -228,20 +225,20 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <label>Work Title</label>
+        <label>Title</label>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Work</pluralLabel>
+    <pluralLabel>User Stories</pluralLabel>
     <searchLayouts>
-        <customTabListAdditionalFields>Work_Number__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Story_Number__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Priority__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Rank__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Story_Points__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>OWNER.ALIAS</customTabListAdditionalFields>
-        <searchResultsAdditionalFields>Work_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Story_Number__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Epic__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Priority__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Rank__c</searchResultsAdditionalFields>
@@ -251,4 +248,17 @@
         <searchResultsAdditionalFields>OWNER.ALIAS</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <fullName>Virtual_Wall</fullName>
+        <availability>online</availability>
+        <description>Open the Virtual Wall VF page for the parent Sprint</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Virtual Wall</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/VirtualWall?id={!User_Story__c.SprintId__c}</url>
+    </webLinks>
 </CustomObject>

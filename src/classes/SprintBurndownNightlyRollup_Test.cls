@@ -1,45 +1,45 @@
 @isTest
 private class SprintBurndownNightlyRollup_Test {
-	static testMethod void closedVsInProgressNotStartedWorks_Test() {
-		// Works with Closed status should be ignored in calculations however
+	static testMethod void closedVsInProgressNotStarteduserStorys_Test() {
+		// userStorys with Closed status should be ignored in calculations however
 		// Not Started and In Progress should be processed.
-		Sprint__c sprint01 = new Sprint__c (Name = 'closedVsInProgressNotStartedWorks_Test',
+		Sprint__c sprint01 = new Sprint__c (Name = 'closedVsInProgressNotStarteduserStorys_Test',
 								Status__c = 'In Progress',
 								Start_Date__c = System.today().addDays(-2),
 								End_Date__c = System.today().addDays(+2));
 		insert sprint01;
 
-		List<Work__c> listWorks = new List<Work__c>();
+		List<User_Story__c> listUserStories = new List<User_Story__c>();
 		// Add 50 each of Not Started, In Progress and Closed
 		for (Integer intCounter = 0; intCounter < 50; intCounter++) {
-			Work__c work = new Work__c(Name = 'closedVsInProgressNotStartedWorks_Test-InProgress-' + intCounter,
+			User_Story__c userStory = new User_Story__c(Name = 'closedVsInProgressNotStarteduserStorys_Test-InProgress-' + intCounter,
 							Sprint__c = sprint01.Id,
 							Status__c = 'In Progress',
 							Story_Points__c = 2);
-			listWorks.add(work);
+			listUserStories.add(userStory);
 		}
 		for (Integer intCounter = 0; intCounter < 50; intCounter++) {
-			Work__c work = new Work__c(Name = 'closedVsInProgressNotStartedWorks_Test-Not Started-' + intCounter,
+			User_Story__c userStory = new User_Story__c(Name = 'closedVsInProgressNotStarteduserStorys_Test-Not Started-' + intCounter,
 							Sprint__c = sprint01.Id,
 							Status__c = 'Not Started',
 							Story_Points__c = 2);
-			listWorks.add(work);
+			listUserStories.add(userStory);
 		}
 		for (Integer intCounter = 0; intCounter < 50; intCounter++) {
-			Work__c work = new Work__c(Name = 'closedVsInProgressNotStartedWorks_Test-Closed-' + intCounter,
+			User_Story__c userStory = new User_Story__c(Name = 'closedVsInProgressNotStarteduserStorys_Test-Closed-' + intCounter,
 							Sprint__c = sprint01.Id,
 							Status__c = 'Closed',
 							Story_Points__c = 2);
-			listWorks.add(work);
+			listUserStories.add(userStory);
 		}
-		insert listWorks;
+		insert listUserStories;
 
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, ' +
-                            	'(SELECT Id, Work__c, Remaining_Hours__c FROM Work__c.Work_Tasks__r ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
 	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
-                        	'FROM Work__c ' +
+                        	'FROM User_Story__c ' +
                         	'WHERE Status__c IN (\'Not Started\', \'In Progress\') ' +
                         	'AND Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__c = \'' + sprint01.Id + '\'';
@@ -54,78 +54,78 @@ private class SprintBurndownNightlyRollup_Test {
 		Sprint_Burndown__c theSprintBurndown = listSprintBurns[0];
 		System.assert(theSprintBurndown.Total_Points_Remaining__c == 200, 'There should be 200 points');
 	}
-	static testMethod void notStartedInProgressVsClosedWorkTasks_Test() {
-		// Work Tasks with Closed status should be ignored in calculations however
-		// Not Started and In Progress Work Tasks should be processed.
-		Sprint__c sprint01 = new Sprint__c (Name = 'notStartedInProgressVsClosedWorkTasks',
+	static testMethod void notStartedInProgressVsCloseduserStoryTasks_Test() {
+		// userStory Tasks with Closed status should be ignored in calculations however
+		// Not Started and In Progress userStory Tasks should be processed.
+		Sprint__c sprint01 = new Sprint__c (Name = 'notStartedInProgressVsCloseduserStoryTasks',
 								Status__c = 'In Progress',
 								Start_Date__c = System.today().addDays(-2),
 								End_Date__c = System.today().addDays(+2));
 		insert sprint01;
 
-		// Add 10 each of Not Started, In Progress Work records
-		List<Work__c> listWorks = new List<Work__c>();
+		// Add 10 each of Not Started, In Progress userStory records
+		List<User_Story__c> listUserStories = new List<User_Story__c>();
 		for (Integer intCounter = 0; intCounter < 20; intCounter++) {
-			Work__c work = new Work__c(Name = 'notStartedInProgressVsClosedWorkTasks-' + intCounter,
+			User_Story__c userStory = new User_Story__c(Name = 'notStartedInProgressVsCloseduserStoryTasks-' + intCounter,
 							Sprint__c = sprint01.Id,
 							Story_Points__c = 2);
 			if (System.Math.mod(intCounter, 2) == 0) {
-				work.Status__c = 'Not Started';
+				userStory.Status__c = 'Not Started';
 			} else if (System.Math.mod(intCounter, 2) == 1) {
-				work.Status__c = 'In Progress';
+				userStory.Status__c = 'In Progress';
 			}
 				
-			listWorks.add(work);
+			listUserStories.add(userStory);
 		}
-		insert listWorks;
+		insert listUserStories;
 
-		// Add 10 Closed Work records
-		List<Work__c> listWorksClosed = new List<Work__c>();
+		// Add 10 Closed userStory records
+		List<User_Story__c> listUserStoriesClosed = new List<User_Story__c>();
 		for (Integer intCounter = 0; intCounter < 10; intCounter++) {
-			Work__c work = new Work__c(Name = 'notStartedInProgressVsClosedWorkTasks-Closed-' + intCounter,
+			User_Story__c userStory = new User_Story__c(Name = 'notStartedInProgressVsCloseduserStoryTasks-Closed-' + intCounter,
 							Sprint__c = sprint01.Id,
 							Status__c = 'Closed',
 							Story_Points__c = 2);
-			listWorksClosed.add(work);
+			listUserStoriesClosed.add(userStory);
 		}
-		insert listWorksClosed;
+		insert listUserStoriesClosed;
 
-		List<Work_Task__c> listWorkTasks = new List<Work_Task__c>();
-		// Add 4 'active' Work Tasks and 2 'inactive' WorkTasks to the 'active' Works - only 4 should be counted
+		List<User_Story_Task__c> listuserStoryTasks = new List<User_Story_Task__c>();
+		// Add 4 'active' userStory Tasks and 2 'inactive' userStoryTasks to the 'active' userStorys - only 4 should be counted
 		for (Integer intCounter = 0; intCounter < 6; intCounter++) {
-			Work_Task__c workTask = new Work_Task__c(Name = 'notStartedInProgressVsClosedWorkTasks-activeWork-' + intCounter,
-								Work__c = listWorks[intCounter].Id, Estimated_Hours__c = 2, Remaining_Hours__c = 2);
+			User_Story_Task__c userStoryTask = new User_Story_Task__c(Name = 'notStartedInProgressVsCloseduserStoryTasks-activeuserStory-' + intCounter,
+								User_Story__c = listUserStories[intCounter].Id, Estimated_Hours__c = 2, Remaining_Hours__c = 2);
 			if (System.Math.mod(intCounter, 3) == 0) {
-				workTask.Status__c = 'Not Started';
+				userStoryTask.Status__c = 'Not Started';
 			} else if (System.Math.mod(intCounter, 3) == 1) {
-				workTask.Status__c = 'In Progress';
+				userStoryTask.Status__c = 'In Progress';
 			} else if (System.Math.mod(intCounter, 3) == 2) {
-				workTask.Status__c = 'Closed';
+				userStoryTask.Status__c = 'Closed';
 			}
-			listWorkTasks.add(workTask);
+			listuserStoryTasks.add(userStoryTask);
 		}
-		// Add 4 'active' Work Tasks and 2 'inactive' WorkTasks to the 'inactive' Works - all should be ignored
+		// Add 4 'active' userStory Tasks and 2 'inactive' userStoryTasks to the 'inactive' userStorys - all should be ignored
 		for (Integer intCounter = 0; intCounter < 6; intCounter++) {
-			Work_Task__c workTask = new Work_Task__c(Name = 'notStartedInProgressVsClosedWorkTasks-closedWork-' + intCounter,
-							Work__c = listWorksClosed[intCounter].Id, Estimated_Hours__c = 2, Remaining_Hours__c = 2);
+			User_Story_Task__c userStoryTask = new User_Story_Task__c(Name = 'notStartedInProgressVsCloseduserStoryTasks-closeduserStory-' + intCounter,
+							User_Story__c = listUserStoriesClosed[intCounter].Id, Estimated_Hours__c = 2, Remaining_Hours__c = 2);
 			if (System.Math.mod(intCounter, 3) == 0) {
-				workTask.Status__c = 'Not Started';
+				userStoryTask.Status__c = 'Not Started';
 			} else if (System.Math.mod(intCounter, 3) == 1) {
-				workTask.Status__c = 'In Progress';
+				userStoryTask.Status__c = 'In Progress';
 			} else if (System.Math.mod(intCounter, 3) == 2) {
-				workTask.Status__c = 'Closed';
+				userStoryTask.Status__c = 'Closed';
 			}
-			listWorkTasks.add(workTask);
+			listuserStoryTasks.add(userStoryTask);
 		}
-		System.debug(listWorkTasks);
-		insert listWorkTasks;
+		System.debug(listuserStoryTasks);
+		insert listuserStoryTasks;
 
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, ' +
-                            	'(SELECT Id, Work__c, Remaining_Hours__c FROM Work__c.Work_Tasks__r ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
 	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
-                        	'FROM Work__c ' +
+                        	'FROM User_Story__c ' +
                         	'WHERE Status__c IN (\'Not Started\', \'In Progress\') ' +
                         	'AND Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__c = \'' + sprint01.Id + '\'';
@@ -159,51 +159,51 @@ private class SprintBurndownNightlyRollup_Test {
 		}
 		insert listSprints;
 
-		// Add 10 each of Not Started, In Progress and Closed Work records
-		List<Work__c> listWorks = new List<Work__c>();
+		// Add 10 each of Not Started, In Progress and Closed User Story records
+		List<User_Story__c> listUserStories = new List<User_Story__c>();
 		for (Integer intCounter = 0; intCounter < 30; intCounter++) {
-			Work__c work = new Work__c(Name = 'multipleSprintBurndowns_Test-' + intCounter,
+			User_Story__c userStory = new User_Story__c(Name = 'multipleSprintBurndowns_Test-' + intCounter,
 							Story_Points__c = 2);
 			if (System.Math.mod(intCounter, 2) == 0) {
-				work.Sprint__c = listSprints[intCounter].Id;
+				userStory.Sprint__c = listSprints[intCounter].Id;
 			} else if (System.Math.mod(intCounter, 3) == 1) {
-				work.Sprint__c = listSprints[intCounter].Id;
+				userStory.Sprint__c = listSprints[intCounter].Id;
 			} else if (System.Math.mod(intCounter, 3) == 2) {
-				work.Sprint__c = listSprints[intCounter].Id;
+				userStory.Sprint__c = listSprints[intCounter].Id;
 			}
 				
 			if (System.Math.mod(intCounter, 3) == 0) {
-				work.Status__c = 'Not Started';
+				userStory.Status__c = 'Not Started';
 			} else if (System.Math.mod(intCounter, 3) == 1) {
-				work.Status__c = 'In Progress';
+				userStory.Status__c = 'In Progress';
 			} else if (System.Math.mod(intCounter, 3) == 2) {
-				work.Status__c = 'Closed';
+				userStory.Status__c = 'Closed';
 			}
 				
-			listWorks.add(work);
+			listUserStories.add(userStory);
 		}
-		insert listWorks;
+		insert listUserStories;
 
-		List<Work_Task__c> listWorkTasks = new List<Work_Task__c>();
+		List<User_Story_Task__c> listuserStoryTasks = new List<User_Story_Task__c>();
 		for (Integer intCounter = 0; intCounter < 6; intCounter++) {
-			Work_Task__c workTask = new Work_Task__c(Name = 'multipleSprintBurndowns_Test-activeWork-' + intCounter,
-								Work__c = listWorks[intCounter].Id, Estimated_Hours__c = 2, Remaining_Hours__c = 2);
+			User_Story_Task__c userStoryTask = new User_Story_Task__c(Name = 'multipleSprintBurndowns_Test-activeuserStory-' + intCounter,
+								User_Story__c = listUserStories[intCounter].Id, Estimated_Hours__c = 2, Remaining_Hours__c = 2);
 			if (System.Math.mod(intCounter, 3) == 0) {
-				workTask.Status__c = 'Not Started';
+				userStoryTask.Status__c = 'Not Started';
 			} else if (System.Math.mod(intCounter, 3) == 1) {
-				workTask.Status__c = 'In Progress';
+				userStoryTask.Status__c = 'In Progress';
 			} else if (System.Math.mod(intCounter, 3) == 2) {
-				workTask.Status__c = 'Closed';
+				userStoryTask.Status__c = 'Closed';
 			}
-			listWorkTasks.add(workTask);
+			listuserStoryTasks.add(userStoryTask);
 		}
 
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, ' +
-                            	'(SELECT Id, Work__c, Remaining_Hours__c FROM Work__c.Work_Tasks__r ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
 	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
-                        	'FROM Work__c ' +
+                        	'FROM User_Story__c ' +
                         	'WHERE Status__c IN (\'Not Started\', \'In Progress\') ' +
                         	'AND Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__r.Name LIKE \'multipleSprintBurndowns_Test%\'';

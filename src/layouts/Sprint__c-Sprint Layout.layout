@@ -95,13 +95,23 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Work_Number__c</fields>
+        <fields>Story_Number__c</fields>
         <fields>Rank__c</fields>
         <fields>Priority__c</fields>
         <fields>Status__c</fields>
         <fields>Story_Points__c</fields>
         <fields>OWNER.ALIAS</fields>
-        <relatedList>Work__c.Sprint__c</relatedList>
+        <relatedList>User_Story__c.Sprint__c</relatedList>
+        <sortField>Rank__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Rank__c</fields>
+        <fields>Estimated_Hours__c</fields>
+        <fields>Remaining_Hours__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>User_Story_Task__c.Sprint__c</relatedList>
         <sortField>Rank__c</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
@@ -116,16 +126,6 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Rank__c</fields>
-        <fields>Estimated_Hours__c</fields>
-        <fields>Remaining_Hours__c</fields>
-        <fields>Status__c</fields>
-        <relatedList>Work_Task__c.Sprint__c</relatedList>
-        <sortField>Rank__c</sortField>
-        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

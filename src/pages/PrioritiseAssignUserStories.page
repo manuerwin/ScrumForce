@@ -1,0 +1,46 @@
+<apex:page standardController="User_Story__c" extensions="PrioritisationAssignUserStory_VfExt"
+    sidebar="false">
+    <apex:include pagename="VirtualWallCss" />
+
+    <apex:sectionHeader title="User Story Prioritisation and Assignment to Sprints" subtitle="sd"
+        description="Update the rank of User Story records or assign them to Sprints by dragging and dropping below."/>
+    <script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/lib/prototype.js')}"
+        type="text/javascript" />
+    <script src="{!urlFor($Resource.scriptaculous190, '/scriptaculous-js-1.9.0/src/scriptaculous.js')}"
+        type="text/javascript" />
+<!--
+    <apex:outputLink id="cancel" value="/{!Sprint__c.Id}" target="_parent" >Back to the Sprint</apex:outputLink>
+-->
+
+    <script type="text/javascript">
+        function updateUserStoryRecords(container) {
+            alert(container);
+            var bolSuccess = false;
+            var strSerializedContainer = Sortable.serialize(container);
+            VirtualWall_VfExt.updateUserStories(strSerializedContainer, function(result, event) {});
+            return bolSuccess;
+        }
+    </script>
+
+    <div id="containerPrioritiseAssignUserStory" >
+        <div id="repeatUserStoryPriorityAssign" class="cell dropArea dropAreaUserStory">
+            <apex:repeat id="UserStories" value="{!listUserStoriesUnassigned}" var="UserStoryUnassigned">
+                <div class="draggable UserStory">
+                    {!UserStoryUnassigned.Name}
+                </div>
+            </apex:repeat>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // <![CDATA[
+            var UserStories = ['repeatUserStoryPriorityAssign'];
+            UserStories.each(function (id) {
+                Sortable.create(id, { tag: 'div', only: 'draggable', constraint: false, hoverclass: 'hoverActive',
+                                    dropOnEmpty: true, containment: UserStories,
+                                    onUpdate: updateUserStoryRecords}
+                );
+            });
+        // ]]>
+    </script>
+</apex:page>

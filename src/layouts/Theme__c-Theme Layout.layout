@@ -64,14 +64,14 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Work_Number__c</fields>
+        <fields>Story_Number__c</fields>
         <fields>Description__c</fields>
         <fields>Priority__c</fields>
         <fields>Rank__c</fields>
         <fields>Status__c</fields>
         <fields>Story_Points__c</fields>
         <fields>OWNER.ALIAS</fields>
-        <relatedList>Work__c.Theme__c</relatedList>
+        <relatedList>User_Story__c.Theme__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

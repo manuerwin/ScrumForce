@@ -2,6 +2,8 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Virtual_Wall</customButtons>
     <excludeButtons>Submit</excludeButtons>
+    <headers>PersonalTagging</headers>
+    <headers>PublicTagging</headers>
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
@@ -9,24 +11,32 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Work__c</field>
+                <behavior>Edit</behavior>
+                <field>Sprint__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Story_Number__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Status__c</field>
+                <behavior>Edit</behavior>
+                <field>Story_Points__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Estimated_Hours__c</field>
+                <behavior>Edit</behavior>
+                <field>Rank__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Remaining_Hours__c</field>
+                <behavior>Readonly</behavior>
+                <field>User_Story_Rank__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Theme__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -35,33 +45,33 @@
                 <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Task_Id__c</field>
+                <behavior>Edit</behavior>
+                <field>Epic__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Task_Rank__c</field>
+                <behavior>Required</behavior>
+                <field>Priority__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Rank__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Sprint__c</field>
+                <behavior>Required</behavior>
+                <field>Status__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
-        <detailHeading>false</detailHeading>
+        <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Description</label>
+        <label>Description and Acceptance Criteria</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Description__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Acceptance_Criteria__c</field>
             </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
@@ -77,7 +87,7 @@
                 <field>CreatedById</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>External_Id__c</field>
             </layoutItems>
         </layoutColumns>
@@ -99,11 +109,22 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Estimated_Hours__c</fields>
+        <fields>Remaining_Hours__c</fields>
+        <fields>Status__c</fields>
+        <fields>OWNER.ALIAS</fields>
+        <fields>Task_Rank__c</fields>
+        <relatedList>User_Story_Task__c.User_Story__c</relatedList>
+        <sortField>Task_Rank__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h60000001ZlA6</masterLabel>
+        <masterLabel>00h60000001Zl9w</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

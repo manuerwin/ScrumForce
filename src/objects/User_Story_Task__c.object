@@ -33,7 +33,7 @@
         <type>Default</type>
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Sprint Backlog Tasks for a piece of Work</description>
+    <description>Tasks for a User Story</description>
     <enableActivities>false</enableActivities>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
@@ -111,7 +111,6 @@
         <inlineHelpText>The grandparent Sprint for this piece of Work</inlineHelpText>
         <label>Sprint</label>
         <referenceTo>Sprint__c</referenceTo>
-        <relationshipLabel>Work Tasks</relationshipLabel>
         <relationshipName>Work_Tasks</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -177,22 +176,22 @@ TEXT( Rank__c )))</formula>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Work__c</fullName>
-        <description>The parent piece of Work</description>
+        <fullName>User_Story__c</fullName>
+        <description>The parent User Story</description>
         <externalId>false</externalId>
-        <inlineHelpText>The parent piece of Work</inlineHelpText>
-        <label>Work</label>
-        <referenceTo>Work__c</referenceTo>
-        <relationshipLabel>Work Tasks</relationshipLabel>
-        <relationshipName>Work_Tasks</relationshipName>
+        <inlineHelpText>The parent User Story</inlineHelpText>
+        <label>User Story</label>
+        <referenceTo>User_Story__c</referenceTo>
+        <relationshipLabel>User Story Tasks</relationshipLabel>
+        <relationshipName>User_Story_Tasks</relationshipName>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
-    <label>Work Task</label>
+    <label>User Story Task</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>Work__c</columns>
+        <columns>User_Story__c</columns>
         <columns>Rank__c</columns>
         <columns>NAME</columns>
         <columns>Estimated_Hours__c</columns>
@@ -202,20 +201,20 @@ TEXT( Rank__c )))</formula>
         <label>All</label>
     </listViews>
     <nameField>
-        <label>Work Task Title</label>
+        <label>Task Title</label>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Work Tasks</pluralLabel>
+    <pluralLabel>User Story Tasks</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Sprint__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Work__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>User_Story__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Estimated_Hours__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Remaining_Hours__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Task_Rank__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>OWNER.ALIAS</customTabListAdditionalFields>
-        <searchResultsAdditionalFields>Work__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>User_Story__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Task_Id__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Estimated_Hours__c</searchResultsAdditionalFields>
@@ -223,6 +222,7 @@ TEXT( Rank__c )))</formula>
         <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
     <webLinks>
         <fullName>Virtual_Wall</fullName>
         <availability>online</availability>
@@ -233,6 +233,6 @@ TEXT( Rank__c )))</formula>
         <masterLabel>Virtual Wall</masterLabel>
         <openType>noSidebar</openType>
         <protected>false</protected>
-        <url>/apex/VirtualWall?id={!Work_Task__c.SprintId__c}</url>
+        <url>/apex/VirtualWall?id={!User_Story_Task__c.SprintId__c}</url>
     </webLinks>
 </CustomObject>

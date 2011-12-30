@@ -6,36 +6,36 @@ public with sharing class VirtualWall_VfExt {
     }
 
     private Sprint__c sprint;
-    
-    public List<WorkAndTasks> listWorkAndTasks {
+
+    public List<StoryAndTasks> listStoryAndTasks {
         get {
-            if (listWorkAndTasks == null) {
-			    listWorkAndTasks = new List<WorkAndTasks>();
-                for (Work__c oneWork : [SELECT Id, Name, Work_Number__c, Owner.Alias, Sprint__c,
+            if (listStoryAndTasks == null) {
+			    listStoryAndTasks = new List<StoryAndTasks>();
+                for (User_Story__c oneUserStory : [SELECT Id, Name, Owner.Alias, Sprint__c, Story_Number__c,
 	                						(SELECT Id, Name, Description__c,
 	                						Status__c, Owner.Alias, Remaining_Hours__c
-	                						FROM Work_Tasks__r ORDER BY Rank__c ASC)
-                            			FROM Work__c
+	                						FROM User_Story_Tasks__r ORDER BY Rank__c ASC)
+                            			FROM User_Story__c
                             			WHERE Sprint__c = :sprint.Id
                             			ORDER BY Rank__c ASC] ) {
-                	WorkAndTasks oneWorkAndTasks = new WorkAndTasks();
-					oneWorkAndTasks.theWork = oneWork;
-					for (Work_Task__c oneWorkTask : oneWork.Work_Tasks__r) {
-						if (oneWorkTask.Status__c == 'Not Started') {
-							oneWorkAndTasks.listTasksToDo.add(oneWorkTask);
-						} else if (oneWorkTask.Status__c == 'In Progress') {
-							oneWorkAndTasks.listTasksDoing.add(oneWorkTask);
-						} else if (oneWorkTask.Status__c == 'Verify') {
-							oneWorkAndTasks.listTasksVerify.add(oneWorkTask);
-						} else if (oneWorkTask.Status__c == 'Done') {
-							oneWorkAndTasks.listTasksDone.add(oneWorkTask);
+                	StoryAndTasks oneStoryAndTasks = new StoryAndTasks();
+					oneStoryAndTasks.theStory = oneUserStory;
+					for (User_Story_Task__c oneUserStoryTask : oneUserStory.User_Story_Tasks__r) {
+						if (oneUserStoryTask.Status__c == 'Not Started') {
+							oneStoryAndTasks.listTasksToDo.add(oneUserStoryTask);
+						} else if (oneUserStoryTask.Status__c == 'In Progress') {
+							oneStoryAndTasks.listTasksDoing.add(oneUserStoryTask);
+						} else if (oneUserStoryTask.Status__c == 'Verify') {
+							oneStoryAndTasks.listTasksVerify.add(oneUserStoryTask);
+						} else if (oneUserStoryTask.Status__c == 'Done') {
+							oneStoryAndTasks.listTasksDone.add(oneUserStoryTask);
 						}
 					}
-					listWorkAndTasks.add(oneWorkAndTasks);
+					listStoryAndTasks.add(oneStoryAndTasks);
                 }
             }
-            System.debug(System.LoggingLevel.DEBUG, '## DEBUG: listWorkAndTasks before return: ' + listWorkAndTasks);
-            return listWorkAndTasks;
+            System.debug(System.LoggingLevel.DEBUG, '## DEBUG: listStoryAndTasks before return: ' + listStoryAndTasks);
+            return listStoryAndTasks;
         }
         set;
     }
@@ -58,23 +58,19 @@ public with sharing class VirtualWall_VfExt {
 		for (String strKeyValuePair : listKeyValuePairs) {
 			System.debug(System.LoggingLevel.DEBUG, 'strKeyValuePair: ' + strKeyValuePair);
 			Integer intLocationOfTilde = strKeyValuePair.indexOf('~');
-			//System.debug(System.LoggingLevel.DEBUG, 'intLocationOfTilde: ' + intLocationOfTilde);
 			Integer intLocationOfEquals = strKeyValuePair.indexOf('=');
-			//System.debug(System.LoggingLevel.DEBUG, 'intLocationOfEquals: ' + intLocationOfEquals);
 			String strStatus = strKeyValuePair.substring(0, intLocationOfTilde);
-			//System.debug(System.LoggingLevel.DEBUG, 'strStatus: ' + strStatus);
 			String strTaskId = strKeyValuePair.substring(intLocationOfEquals + 1);
-			//System.debug(System.LoggingLevel.DEBUG, 'strTaskId: ' + strTaskId);
 			setTaskIds.add(strTaskId);
 			mapTaskIdToStatus.put(strTaskId, strStatus);
 			mapTaskIdToRank.put(strTaskId, intCounter);
 			intCounter++;
 		}
 		
-		List<Work_Task__c> listTasksToUpdate = new List<Work_Task__c>();
+		List<User_Story_Task__c> listTasksToUpdate = new List<User_Story_Task__c>();
 		// Query for tasks and loop - ASSUMPTION: Less than 200 Tasks per Work
-		for (Work_Task__c oneTask : [SELECT Id, Status__c, Rank__c
-									FROM Work_Task__c
+		for (User_Story_Task__c oneTask : [SELECT Id, Status__c, Rank__c
+									FROM User_Story_Task__c
 									WHERE Id IN :setTaskIds]) {
 			// for each task apply the status and rank from the map
 			oneTask.Rank__c = mapTaskIdToRank.get(oneTask.Id);
