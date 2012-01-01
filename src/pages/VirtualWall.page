@@ -14,10 +14,8 @@
 -->
 	<script type="text/javascript">
 		function updateTaskRecords(container) {
-		    var bolSuccess = false;
 		    var strSerializedContainer = Sortable.serialize(container);
 		    VirtualWall_VfExt.updateTasks(strSerializedContainer, function(result, event) {});
-		    return bolSuccess;
 		}
 	</script>
     <div id="containerUserStoryManagement" >

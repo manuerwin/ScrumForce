@@ -1,14 +1,13 @@
 public without sharing class PrioritisationAssignUserStory_VfExt {
 
-    public PrioritisationAssignUserStory_VfExt(ApexPages.StandardController stdController) {
-    }
+    public PrioritisationAssignUserStory_VfExt(ApexPages.StandardController stdController) {}
 
     public List<User_Story__c> listUserStoriesUnassigned {
         get {
             if (listUserStoriesUnassigned == null) {
                 listUserStoriesUnassigned = [SELECT Id, Name
                                     FROM User_Story__c
-                                    ORDER BY Sprint__c];
+                                    ORDER BY Rank__c];
             }
             return listUserStoriesUnassigned;
         }
@@ -16,7 +15,7 @@ public without sharing class PrioritisationAssignUserStory_VfExt {
     }
 
     @RemoteAction
-    public static Boolean updateuserStories (String strKeyValuePairs) {
+    public static Boolean updateUserStories (String strKeyValuePairs) {
         // TODO: Handle errors with the DML and return false to force a revert
         Boolean bolSuccess = false;
         System.debug(System.LoggingLevel.DEBUG, 'strKeyValuePairs: ' + strKeyValuePairs);

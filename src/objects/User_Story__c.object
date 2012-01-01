@@ -250,6 +250,18 @@
     <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
     <webLinks>
+        <fullName>Prioritise_and_Assign</fullName>
+        <availability>online</availability>
+        <description>User Story Prioritisation and Assignment to Sprints</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Prioritise and Assign</masterLabel>
+        <openType>noSidebar</openType>
+        <page>PrioritiseAssignUserStories</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
         <fullName>Virtual_Wall</fullName>
         <availability>online</availability>
         <description>Open the Virtual Wall VF page for the parent Sprint</description>

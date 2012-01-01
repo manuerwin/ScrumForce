@@ -224,6 +224,17 @@ TEXT( Rank__c )))</formula>
     <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
     <webLinks>
+        <fullName>Prioritise_and_Assign</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Prioritise and Assign</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <url>/apex/PrioritiseAssignUserStories</url>
+    </webLinks>
+    <webLinks>
         <fullName>Virtual_Wall</fullName>
         <availability>online</availability>
         <description>Open the Virtual Wall VF page for the grandparent Sprint</description>

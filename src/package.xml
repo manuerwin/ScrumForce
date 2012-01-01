@@ -23,7 +23,7 @@
         <name>ApexPage</name>
     </types>
     <types>
-        <members>UserStoryTaskBeforeInsertUpdate</members>
+        <members>UserStoryTaskBeforeInsert</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -61,6 +61,10 @@
         <members>User_Story_Task__c-User Story Task Layout</members>
         <members>User_Story__c-User Story Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>scriptaculous190</members>
+        <name>StaticResource</name>
     </types>
     <types>
         <members>Epic__c</members>

@@ -58,7 +58,7 @@
 		.dropAreaTask {
 			width: 24%;
 		}
-		.dropAreaWork {
+		.dropAreaUserStory {
 			width: 74%;
 		}
 		.headerCell {
