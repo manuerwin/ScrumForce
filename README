@@ -21,3 +21,16 @@ and Apex development has been only used as necessary.
 
 FEATURES:
 	- A Virtual Wall to drag and drop User Story Tasks to update status as well as edit User Story Task information
+
+STORY POINT SCALE:
+Story Point scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?
+0: simple field, page layout update, list view
+1: complex field / very simple object (<2 fields)
+2: simple object (3 > 5 fields, tab, page layouts, search layouts, app)
+3: complex object (>5 fields) / very simple trigger, class, VF page
+5: simple trigger, class, VF page
+8: complex trigger, class, VF page
+13: very complex trigger, class, VF page (consider decomposing if possible)
+20: business process (needs decomposing) EPIC
+40: business system (needs decomposing) EPIC
+100: business concept (needs decomposing) EPIC
