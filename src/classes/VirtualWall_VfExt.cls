@@ -53,7 +53,8 @@ public with sharing class VirtualWall_VfExt {
 		Map<Id, String> mapTaskIdToStatus = new Map<Id, String>();
 		Map<Id, Integer> mapTaskIdToRank = new Map<Id, Integer>();
 
-		// ASSUMPTION: format is status~workId[]=taskId by this point e.g., done~a0d60000000vKjfAAE[]=a0o600000026wD8AAI
+		// ASSUMPTION: format is status~UserStoryId[]=taskId by this point
+		//	e.g., done~a0d60000000vKjfAAE[]=a0o600000026wD8AAI
 		Integer intCounter = 1;
 		for (String strKeyValuePair : listKeyValuePairs) {
 			System.debug(System.LoggingLevel.DEBUG, 'strKeyValuePair: ' + strKeyValuePair);
@@ -68,7 +69,7 @@ public with sharing class VirtualWall_VfExt {
 		}
 		
 		List<User_Story_Task__c> listTasksToUpdate = new List<User_Story_Task__c>();
-		// Query for tasks and loop - ASSUMPTION: Less than 200 Tasks per Work
+		// Query for tasks and loop - ASSUMPTION: Less than 200 Tasks per User Story
 		for (User_Story_Task__c oneTask : [SELECT Id, Status__c, Rank__c
 									FROM User_Story_Task__c
 									WHERE Id IN :setTaskIds]) {
