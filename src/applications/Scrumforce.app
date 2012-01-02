@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <defaultLandingTab>standard-home</defaultLandingTab>
-    <description>Application to enable Scrum teams to capture and manage Work (User Stories, Bug).</description>
+    <description>Application to enable Scrum teams to capture and manage User Stories (including Bugs).</description>
     <label>Scrumforce</label>
     <logo>Scrumforce_Files/scrumforce_logo.png</logo>
     <tab>standard-File</tab>

@@ -52,9 +52,9 @@
     </fields>
     <fields>
         <fullName>Description__c</fullName>
-        <description>The full detail for this piece of work</description>
+        <description>The full detail for this User Story</description>
         <externalId>false</externalId>
-        <inlineHelpText>The full detail for this piece of work</inlineHelpText>
+        <inlineHelpText>The full detail for this User Story</inlineHelpText>
         <label>Description</label>
         <length>32768</length>
         <trackHistory>true</trackHistory>
@@ -63,12 +63,12 @@
     </fields>
     <fields>
         <fullName>Epic__c</fullName>
-        <description>The parent Epic for this piece of Work</description>
+        <description>The parent Epic for this User Story</description>
         <externalId>false</externalId>
-        <inlineHelpText>The parent Epic for this piece of Work</inlineHelpText>
+        <inlineHelpText>The parent Epic for this User Story</inlineHelpText>
         <label>Epic</label>
         <referenceTo>Epic__c</referenceTo>
-        <relationshipName>Work</relationshipName>
+        <relationshipName>User_Story</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
@@ -88,9 +88,9 @@
     </fields>
     <fields>
         <fullName>Priority__c</fullName>
-        <description>The priority of this piece of work as set by the business through the Product Owner</description>
+        <description>The priority of this User Story as set by the business through the Product Owner</description>
         <externalId>false</externalId>
-        <inlineHelpText>The priority of this piece of work as set by the business through the Product Owner</inlineHelpText>
+        <inlineHelpText>The priority of this User Story as set by the business through the Product Owner</inlineHelpText>
         <label>Priority</label>
         <picklist>
             <picklistValues>
@@ -116,9 +116,9 @@
     </fields>
     <fields>
         <fullName>Rank__c</fullName>
-        <description>The absolute rank of this piece of Work in relation to other pieces of Work in the Product Backlog</description>
+        <description>The absolute rank of this User Story in relation to other User Stories in the Product Backlog</description>
         <externalId>false</externalId>
-        <inlineHelpText>The absolute rank of this piece of Work in relation to other pieces of Work in the Product Backlog</inlineHelpText>
+        <inlineHelpText>The absolute rank of this User Story in relation to other User Stories in the Product Backlog</inlineHelpText>
         <label>Rank</label>
         <precision>18</precision>
         <required>false</required>
@@ -129,21 +129,21 @@
     </fields>
     <fields>
         <fullName>Sprint__c</fullName>
-        <description>The Sprint this piece of Work is contained within</description>
+        <description>The Sprint this User Story is contained within</description>
         <externalId>false</externalId>
-        <inlineHelpText>The Sprint this piece of Work is contained within</inlineHelpText>
+        <inlineHelpText>The Sprint this User Story is contained within</inlineHelpText>
         <label>Sprint</label>
         <referenceTo>Sprint__c</referenceTo>
-        <relationshipName>Work</relationshipName>
+        <relationshipName>UserStory</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Status__c</fullName>
-        <description>The current status of this piece of work</description>
+        <description>The current status of this User Story</description>
         <externalId>false</externalId>
-        <inlineHelpText>The current status of this piece of work</inlineHelpText>
+        <inlineHelpText>The current status of this User Story</inlineHelpText>
         <label>Status</label>
         <picklist>
             <picklistValues>
@@ -165,19 +165,19 @@
     </fields>
     <fields>
         <fullName>Story_Number__c</fullName>
-        <description>Unique reference for each piece of work</description>
+        <description>Unique reference for each User Story</description>
         <displayFormat>US-{000}</displayFormat>
         <externalId>false</externalId>
-        <inlineHelpText>Unique reference for each piece of work</inlineHelpText>
+        <inlineHelpText>Unique reference for each User Story</inlineHelpText>
         <label>Story Number</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </fields>
     <fields>
         <fullName>Story_Points__c</fullName>
-        <description>The Story Point value for this piece of Work. Scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100</description>
+        <description>The Story Point value for this User Story. Scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100</description>
         <externalId>false</externalId>
-        <inlineHelpText>The Story Point value for this piece of Work. Scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100</inlineHelpText>
+        <inlineHelpText>The Story Point value for this User Story. Scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100</inlineHelpText>
         <label>Story Points</label>
         <precision>3</precision>
         <required>false</required>
@@ -188,12 +188,12 @@
     </fields>
     <fields>
         <fullName>Theme__c</fullName>
-        <description>The Theme that this piece of Work is a part of e.g., Credit Card stories</description>
+        <description>The Theme that this User Story is a part of e.g., Credit Card stories</description>
         <externalId>false</externalId>
-        <inlineHelpText>The Theme that this piece of Work is a part of e.g., Credit Card stories</inlineHelpText>
+        <inlineHelpText>The Theme that this User Story is a part of e.g., Credit Card stories</inlineHelpText>
         <label>Theme</label>
         <referenceTo>Theme__c</referenceTo>
-        <relationshipName>Work</relationshipName>
+        <relationshipName>User_Story</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>

@@ -73,7 +73,7 @@
 			overflow: auto;
 			width: 90%;
 		}
-		#headerWork {
+		#headerUserStory {
 			width: 10%;
 		}
 		.hidden {

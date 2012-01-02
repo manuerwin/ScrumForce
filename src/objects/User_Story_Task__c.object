@@ -79,9 +79,9 @@
     <fields>
         <fullName>Rank__c</fullName>
         <defaultValue>0</defaultValue>
-        <description>The rank of this Work Task in relation to all others for the parent Work</description>
+        <description>The rank of this User Story Task in relation to all others for the parent User Story</description>
         <externalId>false</externalId>
-        <inlineHelpText>The rank of this Work Task in relation to all others for the parent Work</inlineHelpText>
+        <inlineHelpText>The rank of this User Story Task in relation to all others for the parent User Story</inlineHelpText>
         <label>Rank</label>
         <precision>18</precision>
         <required>false</required>
@@ -106,12 +106,12 @@
     </fields>
     <fields>
         <fullName>Sprint__c</fullName>
-        <description>The grandparent Sprint for this piece of Work. Set by a Workflow Field Update on every change.</description>
+        <description>The grandparent Sprint for this User Story. Set by a Workflow Field Update on every change.</description>
         <externalId>false</externalId>
-        <inlineHelpText>The grandparent Sprint for this piece of Work</inlineHelpText>
+        <inlineHelpText>The grandparent Sprint for this User Story</inlineHelpText>
         <label>Sprint</label>
         <referenceTo>Sprint__c</referenceTo>
-        <relationshipName>Work_Tasks</relationshipName>
+        <relationshipName>User_Story_Tasks</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
