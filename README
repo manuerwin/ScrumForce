@@ -19,10 +19,10 @@ System.Database.executeBatch(sbnr);
 As much as possible standard Salesforce platform functionality has been used to create this application
 and Apex development has been only used as necessary.
 
-FEATURES:
+==FEATURES==
 	- A Virtual Wall to drag and drop User Story Tasks to update status as well as edit User Story Task information
 
-STORY POINT SCALE:
+==STORY POINT SCALE==
 Story Point scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?
 0: simple field, page layout update, list view
 1: complex field / very simple object (<2 fields)
@@ -34,3 +34,8 @@ Story Point scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?
 20: business process (needs decomposing) EPIC
 40: business system (needs decomposing) EPIC
 100: business concept (needs decomposing) EPIC
+
+Sprints = 2 hours
+
+==PRODUCT BACKLOG==
+See https://github.com/manuerwin/ScrumForce/issues for current Story backlog
