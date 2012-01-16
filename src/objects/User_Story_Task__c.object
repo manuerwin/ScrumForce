@@ -191,6 +191,7 @@ TEXT( Rank__c )))</formula>
     <label>User Story Task</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>Sprint__c</columns>
         <columns>User_Story__c</columns>
         <columns>Rank__c</columns>
         <columns>NAME</columns>
