@@ -1,13 +1,13 @@
 Scrumforce is a Force.com app on the AppExchange that provides the ability to manage SCRUM agile projects.
 
 Various records can be entered to portray the types information within a SCRUM team namely:
-	- Epic- A large User Story, generally too big to fit into a single Sprint. Useful for high level 'road map'/
-	'release planning'.
-	- Theme – A set of related User Stories. Useful for high level 'road map' / 'release planning'.
-	- User Story - Includes 'User Stories' as well as Bugs and other items that may not have originated from
-	  the Product Backlog.
-	- User Story Task - Sprint Backlog Tasks for a piece of User Story.
-	- Sprint - A collection of pieces of User Story to be worked on over a period of time.
+- Epic- A large User Story, generally too big to fit into a single Sprint. Useful for high level 'road map'/
+'release planning'.
+- Theme – A set of related User Stories. Useful for high level 'road map' / 'release planning'.
+- User Story - Includes 'User Stories' as well as Bugs and other items that may not have originated from
+  the Product Backlog.
+- User Story Task - Sprint Backlog Tasks for a piece of User Story.
+- Sprint - A collection of pieces of User Story to be worked on over a period of time.
 
 The system takes care of regular snapshots of rolled up Sprint information (i.e., remaining points and hours)
 which are stored as 'Sprint Burndowns' and then charted on the Sprint page layout.
@@ -20,7 +20,7 @@ As much as possible standard Salesforce platform functionality has been used to 
 and Apex development has been only used as necessary.
 
 ==FEATURES==
-	- A Virtual Wall to drag and drop User Story Tasks to update status as well as edit User Story Task information
+- A Virtual Wall to drag and drop User Story Tasks to update status as well as edit User Story Task information
 
 ==STORY POINT SCALE==
 Story Point scale: 0, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?
