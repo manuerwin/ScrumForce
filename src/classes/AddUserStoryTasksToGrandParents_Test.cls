@@ -10,17 +10,35 @@ private class AddUserStoryTasksToGrandParents_Test {
         insert sprint01;
 
 		List<User_Story__c> listUserStories = new List<User_Story__c>();
-		
-        
+		User_Story__c userStory01 = new User_Story__c();
+		userStory01.Name = 'no sprint';
+		userStory01.Story_Points__c = 13;
+		listUserStories.add(userStory01);
+		User_Story__c userStory02 = new User_Story__c();
+		userStory02.Name = 'have a sprint';
+		userStory02.Story_Points__c = 13;
+		userStory02.Sprint__c = sprint01.Id;
+		listUserStories.add(userStory02);
+		insert listUserStories;
+
+		Test.startTest();
         List<User_Story_Task__c> listUserStoryTasks = new List<User_Story_Task__c>();
         for (Integer intCounter = 0; intCounter < 300; intCounter++) {
             User_Story_Task__c userStoryTask = new User_Story_Task__c();
             userStoryTask.Description__c = String.valueOf(intCounter);
-            userStoryTask.Estimated_Hours__c = intCounter;
+            userStoryTask.Estimated_Hours__c = (intCounter + 1) / 30;
 
-            userStoryTask.Sprint__c = sprint01.Id;
+            if (System.Math.mod(intCounter, 2) == 0) {
+	            userStoryTask.User_Story__c = userStory02.Id;
+            }
+            listUserStoryTasks.add(userStoryTask);
         }
-        // Purpose: When a User Story Task is created, associate the Sprint lookup field to the grandparent Sprint record.
-        
+        insert listUserStoryTasks;
+
+        User_Story_Task__c userStoryTaskHasSprint = [SELECT Id, Sprint__c
+        											FROM User_Story_Task__c
+        											WHERE Id = :listUserStoryTasks[0].Id];
+		System.assert(userStoryTaskHasSprint.Sprint__c == sprint01.Id, 'The sprint should be the grandparent');
+		Test.stopTest();
     }
 }
