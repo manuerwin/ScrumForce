@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>AddUserStoryTasksToGrandParents_Test</members>
         <members>PrioritisationAssignUserStory_VfExt</members>
         <members>SprintBurndownNightlyRollup</members>
         <members>SprintBurndownNightlyRollup_Schedule</members>

@@ -3,14 +3,4 @@
     <apiVersion>22.0</apiVersion>
     <description>Sprint Burndown chart</description>
     <label>SprintBurndown</label>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>11</minorNumber>
-        <namespace>INFA</namespace>
-    </packageVersions>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>6</minorNumber>
-        <namespace>nzpcode</namespace>
-    </packageVersions>
 </ApexPage>

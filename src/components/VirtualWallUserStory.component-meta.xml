@@ -3,14 +3,4 @@
     <apiVersion>23.0</apiVersion>
     <description>Take a User Story Id, display the User Story information plus all child User Story Tasks grouped by the Task Status.</description>
     <label>VirtualWallUserStory</label>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>11</minorNumber>
-        <namespace>INFA</namespace>
-    </packageVersions>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>6</minorNumber>
-        <namespace>nzpcode</namespace>
-    </packageVersions>
 </ApexComponent>

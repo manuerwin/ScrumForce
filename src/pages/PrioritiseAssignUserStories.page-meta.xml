@@ -3,14 +3,4 @@
     <apiVersion>23.0</apiVersion>
     <description>CHANGE ME</description>
     <label>PrioritiseAssignUserStories</label>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>11</minorNumber>
-        <namespace>INFA</namespace>
-    </packageVersions>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>6</minorNumber>
-        <namespace>nzpcode</namespace>
-    </packageVersions>
 </ApexPage>

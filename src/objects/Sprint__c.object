@@ -68,7 +68,7 @@
         <picklist>
             <picklistValues>
                 <fullName>Not Started</fullName>
-                <default>false</default>
+                <default>true</default>
             </picklistValues>
             <picklistValues>
                 <fullName>In Progress</fullName>
