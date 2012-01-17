@@ -30,4 +30,5 @@ System.debug(LoggingLevel.DEBUG, '##:getScriptStatements: ' + Limits.getScriptSt
 			System.debug(LoggingLevel.DEBUG, '## The UserStory does not have a parent Sprint so do NOT associate it');
 		}
 	}
+    System.debug(LoggingLevel.DEBUG, '##### END: ASSOCIATE User Story Task TO GRANDPARENT SPRINT :END #####');
 }
