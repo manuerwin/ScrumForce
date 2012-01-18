@@ -21,25 +21,25 @@
         <protected>false</protected>
     </fieldUpdates>
     <rules>
-        <fullName>Auto Activate Sprints At Start Date</fullName>
+        <fullName>Sprint Status Updates</fullName>
         <active>true</active>
+        <booleanFilter>1 OR ( 2 AND 3 )</booleanFilter>
         <criteriaItems>
             <field>Sprint__c.Status__c</field>
             <operation>equals</operation>
             <value>Not Started</value>
         </criteriaItems>
-        <description>When the Sprint Start Date occurs the Sprint Status should be changed to &apos;In Progress&apos;</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
-        <fullName>Auto Close Sprint At End Date</fullName>
-        <active>true</active>
         <criteriaItems>
-            <field>Sprint__c.Status__c</field>
-            <operation>equals</operation>
-            <value>In Progress</value>
+            <field>Sprint__c.Start_Date__c</field>
+            <operation>lessOrEqual</operation>
+            <value>TODAY</value>
         </criteriaItems>
-        <description>A Sprint should be &apos;Closed&apos; when the End Date is reached</description>
+        <criteriaItems>
+            <field>Sprint__c.End_Date__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <description>Ensure the Sprint Status is updated</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>
