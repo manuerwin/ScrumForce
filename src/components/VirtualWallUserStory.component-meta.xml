@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>23.0</apiVersion>
-    <description>Take a User Story Id, display the User Story information plus all child User Story Tasks grouped by the Task Status.</description>
-    <label>VirtualWallUserStory</label>
-</ApexComponent>
