@@ -7,6 +7,7 @@
         <members>SprintBurndownNightlyRollup_Test</members>
         <members>SprintBurndown_VfExt</members>
         <members>StoryAndTasks</members>
+        <members>UpdateParentUserStoryStatus_Test</members>
         <members>UserStoryTasksToGrandParents_Test</members>
         <members>VirtualWallUserStory_VfExt</members>
         <members>VirtualWall_VfExt</members>
