@@ -164,6 +164,25 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Story_Indicator__c</fullName>
+        <description>Visual indicator of User Story Status</description>
+        <externalId>false</externalId>
+        <formula>IMAGE (
+	CASE(Status__c , 
+		&quot;Closed&quot;, &quot;/img/samples/flag_green.gif&quot;,
+		&quot;In Progress&quot;, &quot;/img/samples/flag_yellow.gif&quot;,
+		&quot;Not Started&quot;, &quot;/img/samples/flag_red.gif&quot;, 
+		&quot;/s.gif&quot;), 
+	&quot;User Story Status&quot;
+)</formula>
+        <inlineHelpText>Visual indicator of User Story Status</inlineHelpText>
+        <label>Story Indicator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Story_Number__c</fullName>
         <description>Unique reference for each User Story</description>
         <displayFormat>US-{000}</displayFormat>
