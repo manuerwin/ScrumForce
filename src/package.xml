@@ -25,6 +25,7 @@
     </types>
     <types>
         <members>UserStoryAfterUpdate</members>
+        <members>UserStoryTaskAfterInsertUpdate</members>
         <members>UserStoryTaskBeforeInsert</members>
         <name>ApexTrigger</name>
     </types>
