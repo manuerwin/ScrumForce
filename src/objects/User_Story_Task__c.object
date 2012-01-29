@@ -91,6 +91,45 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Remaining_Hours_Indicator__c</fullName>
+        <description>Visual indicator of remaining hours.
+Red = above 66%
+Yellow = between 66% and 33%
+Green = less than 33%</description>
+        <externalId>false</externalId>
+        <formula>IF( Remaining_Hours_Percentage__c &gt; 0.66, 
+	IMAGE(&quot;/img/samples/flag_red.gif&quot;, &quot;red&quot;),
+	IF( Remaining_Hours_Percentage__c &gt; 0.33,
+		IMAGE(&quot;/img/samples/flag_yellow.gif&quot;, &quot;yellow&quot;),
+		IMAGE(&quot;/img/samples/flag_green.gif&quot;, &quot;green&quot;)
+	)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Visual indicator of remaining hours.
+Red = above 66%
+Yellow = between 66% and 33%
+Green = less than 33%</inlineHelpText>
+        <label>Remaining Hours Indicator</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Remaining_Hours_Percentage__c</fullName>
+        <description>Remaining Hours divided by Estimated Hours</description>
+        <externalId>false</externalId>
+        <formula>Remaining_Hours__c /  Estimated_Hours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Remaining Hours divided by Estimated Hours</inlineHelpText>
+        <label>Remaining Hours %</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
         <fullName>Remaining_Hours__c</fullName>
         <defaultValue>0</defaultValue>
         <description>Total number of hours remaining to complete this Task. The default value ensures the nightly SprintBurndown batch Apex doesn&apos;t fail.</description>
@@ -122,7 +161,8 @@
         <externalId>false</externalId>
         <formula>IMAGE (
 	CASE(Status__c , 
-		&quot;Closed&quot;, &quot;/img/samples/flag_green.gif&quot;,
+		&quot;Done&quot;, &quot;/img/samples/flag_green.gif&quot;,
+		&quot;Verify&quot;, &quot;/img/samples/flag_yellow.gif&quot;,
 		&quot;In Progress&quot;, &quot;/img/samples/flag_yellow.gif&quot;,
 		&quot;Not Started&quot;, &quot;/img/samples/flag_red.gif&quot;, 
 		&quot;/s.gif&quot;), 

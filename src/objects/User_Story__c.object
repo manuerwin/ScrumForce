@@ -218,6 +218,19 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Total_Hours_Remaining_Number__c</fullName>
+        <description>The total hours remaining for all Not Started and In Progress User Story Tasks currently associated with this User Story.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total hours remaining for all Not Started and In Progress User Story Tasks currently associated with this User Story.</inlineHelpText>
+        <label>Total Hours Remaining Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>User_Story_Rank__c</fullName>
         <description>Calculated rank of this User Story based on combined Status and Rank. Used for sorting.</description>
         <externalId>false</externalId>
