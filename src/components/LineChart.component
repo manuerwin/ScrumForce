@@ -1,0 +1,58 @@
+<apex:component >
+	<apex:attribute name="jsondata" description="This is the chart data" type="string" required="true" />
+	<apex:attribute name="axisColor" description="The color of the axis. Possible values are as those of the backgroundColor configuration option." type="string"/>
+	<apex:attribute name="axisBackgroundColor" description="The border around axis background. Possible values are as those of the backgroundColor configuration option." type="string"/>
+	<apex:attribute name="backgroundColor" description="The background color for the main area of the chart. A string with color supported by HTML, for example 'red' or '#00cc00'" type="string"/>
+	<apex:attribute name="borderColor" description="The border around chart elements. Possible values are as those of the backgroundColor configuration option." type="string"/>
+	<apex:attribute name="enableTooltip" description="If set to true, tooltips are shown when the user clicks on a data point." type="Boolean"/>
+	<apex:attribute name="focusBorderColor" description="The border around chart elements that are in focus (pointed by the mouse). Possible values are as those of the backgroundColor configuration option. " type="string"/>
+	<apex:attribute name="height" description="This is the chart height" type="string" default="250" />
+	<apex:attribute name="legend" description="Can be one of the following: right, left, top, bottom, none" type="string" default="bottom"/>
+	<apex:attribute name="legendBackgroundColor" description="The background color for the legend area of the chart. Possible values are as those of the backgroundColor configuration option." type="string"/>
+	<apex:attribute name="legendTextColor" description="The color for the text entries of the legend. Possible values are as those of the backgroundColor configuration option." type="string"/>
+	<apex:attribute name="lineSize" description="Line width in pixels. Use zero to hide all lines and show only the points." type="integer" default="2"/>
+	<apex:attribute name="pointSize" description="Size of displayed points in pixels. Use zero to hide all points." type="integer" default="3"/>
+	<apex:attribute name="reverseAxis" description="If set to true, will draw categories from right to left. The default is to draw left-to-right." type="Boolean"/>
+	<apex:attribute name="showCategories" description="If true, will show category labels. If false, will not." type="Boolean"/>
+	<apex:attribute name="smoothLine" description="If set to true, line angles will be smoothed." type="Boolean" default="true"/>
+	<apex:attribute name="title" description="Text to display above the chart." type="string" required="true" />
+	<apex:attribute name="titleX" description="Text to display below the horizontal axis." type="string"/>
+	<apex:attribute name="titleY" description="Text to display by the vertical axis." type="string"/>
+	<apex:attribute name="titleColor" description="The color for the chart's title. Possible values are as those of the backgroundColor configuration option." type="string"/>
+	<apex:attribute name="width" description="This is the chart width" type="string" default="500" />
+	<!-- Doc for this component is here: http://code.google.com/apis/visualization/documentation/gallery/motionchart.html -->
+	
+	<apex:outputPanel id="chart_div">
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+ 			google.load("visualization", "1", {packages: ["linechart"]});
+			google.setOnLoadCallback(drawLineChart); 
+ 
+			function drawLineChart() {
+  				var data = new google.visualization.DataTable( eval( '({!jsondata})' ) );
+  
+				var chart = new google.visualization.LineChart( 
+		  		document.getElementById('{!$Component.chart_div}'));
+  				chart.draw(data, {width: {!width}, height: {!height},
+			  					  axisColor: '{!axisColor}',
+			  					  axisBackgroundColor: '{!axisBackgroundColor}',
+								  backgroundColor: '{!backgroundColor}',
+  			  				      borderColor: '{!borderColor}',
+	  		  					  enableTooltip: {!enableTooltip},
+		  	  					  focusBorderColor: '{!focusBorderColor}',
+			  					  legend: '{!legend}',
+			  					  legendBackgroundColor: '{!legendBackgroundColor}',
+			  					  legendTextColor: '{!legendTextColor}',
+			  					  lineSize: {!lineSize},
+			  					  pointSize: {!pointSize},
+			  					  reverseAxis: {!reverseAxis},
+			  					  showCategories: {!showCategories},
+			  					  smoothLine: {!smoothLine},
+			  					  title: '{!title}',
+			  					  titleX: '{!titleX}',
+			  					  titleY: '{!titleY}',
+			  					  titleColor: '{!titleColor}'});
+ 			}
+		</script>
+	</apex:outputPanel>
+</apex:component>
