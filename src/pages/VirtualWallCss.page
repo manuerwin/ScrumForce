@@ -25,7 +25,7 @@
 		}
 		.draggable {
 			background: -webkit-gradient(linear, 0 0, 0 100%, from(#fefbb0), to(#fff955));
-			background-color: white;  
+			background-color: yellow;  
 			border: 2px solid #666666;
 			border-radius: 3px;
 			-moz-border-radius: 3px;
