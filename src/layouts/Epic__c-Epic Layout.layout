@@ -66,7 +66,10 @@
         <fields>Status__c</fields>
         <fields>Story_Points__c</fields>
         <fields>OWNER.ALIAS</fields>
+        <fields>User_Story_Rank__c</fields>
         <relatedList>User_Story__c.Epic__c</relatedList>
+        <sortField>Rank__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

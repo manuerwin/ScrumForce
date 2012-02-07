@@ -36,7 +36,7 @@
     <description>Tasks for a User Story</description>
     <enableActivities>false</enableActivities>
     <enableEnhancedLookup>true</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
     <fields>
@@ -46,6 +46,7 @@
         <inlineHelpText>Task description</inlineHelpText>
         <label>Description</label>
         <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -59,6 +60,7 @@
         <precision>2</precision>
         <required>true</required>
         <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Number</type>
         <unique>false</unique>
@@ -72,6 +74,7 @@
         <label>External Id</label>
         <length>255</length>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>true</unique>
@@ -86,6 +89,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
@@ -139,6 +143,7 @@ Green = less than 33%</inlineHelpText>
         <precision>2</precision>
         <required>true</required>
         <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Number</type>
         <unique>false</unique>
@@ -152,6 +157,7 @@ Green = less than 33%</inlineHelpText>
         <referenceTo>Sprint__c</referenceTo>
         <relationshipName>User_Story_Tasks</relationshipName>
         <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
@@ -200,6 +206,7 @@ Green = less than 33%</inlineHelpText>
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>
     </fields>
@@ -244,6 +251,7 @@ TEXT( Rank__c )))</formula>
         <relationshipLabel>User Story Tasks</relationshipLabel>
         <relationshipName>User_Story_Tasks</relationshipName>
         <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
@@ -262,6 +270,7 @@ TEXT( Rank__c )))</formula>
     </listViews>
     <nameField>
         <label>Task Title</label>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>

@@ -36,27 +36,32 @@
     <description>An Epic is a group of related User Stories. You would be unlikely to introduce an Epic into a sprint without first breaking it down into it’s component User Stories so to reduce uncertainty.</description>
     <enableActivities>false</enableActivities>
     <enableEnhancedLookup>true</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
     <fields>
         <fullName>Description__c</fullName>
-        <description>Details of the Theme - limiting to 255 characters as won&apos;t know a lot of detail at this level anyway.</description>
+        <description>Details of the Theme</description>
         <externalId>false</externalId>
-        <inlineHelpText>Details of the Theme - limiting to 255 characters as won&apos;t know a lot of detail at this level anyway.</inlineHelpText>
+        <inlineHelpText>Details of the Theme</inlineHelpText>
         <label>Description</label>
-        <required>false</required>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
-        <type>TextArea</type>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
     </fields>
     <label>Epic</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
         <label>Epic Name</label>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>

@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>GoogleViz</members>
+        <members>JSONObject</members>
         <members>PrioritisationAssignUserStory_VfExt</members>
         <members>SprintBurndownNightlyRollup</members>
         <members>SprintBurndownNightlyRollup_Schedule</members>
@@ -14,10 +16,12 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>LineChart</members>
         <members>VirtualWallUserStory</members>
         <name>ApexComponent</name>
     </types>
     <types>
+        <members>PrioritiseAssignUserStories</members>
         <members>SprintBurndown</members>
         <members>VirtualWall</members>
         <members>VirtualWallCss</members>
@@ -48,6 +52,10 @@
         <members>Sprint__c-en_US</members>
         <members>Theme__c-en_US</members>
         <name>CustomObjectTranslation</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomPageWebLink</name>
     </types>
     <types>
         <members>Epic__c</members>
@@ -87,4 +95,3 @@
     </types>
     <version>20.0</version>
 </Package>
-

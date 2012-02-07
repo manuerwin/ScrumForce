@@ -38,7 +38,7 @@
 Themes can be used at both Programme and Project Level to drive strategic alignment and communicate a clear direction.</description>
     <enableActivities>false</enableActivities>
     <enableEnhancedLookup>true</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
     <fields>
@@ -48,6 +48,7 @@ Themes can be used at both Programme and Project Level to drive strategic alignm
         <inlineHelpText>Details of the Theme</inlineHelpText>
         <label>Description</label>
         <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -55,11 +56,14 @@ Themes can be used at both Programme and Project Level to drive strategic alignm
     <label>Theme</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
         <label>Theme Name</label>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>

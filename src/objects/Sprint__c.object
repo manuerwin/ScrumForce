@@ -36,7 +36,7 @@
     <description>A collection of User Stories to be worked on over a period of time.</description>
     <enableActivities>false</enableActivities>
     <enableEnhancedLookup>true</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
     <fields>
@@ -46,6 +46,7 @@
         <inlineHelpText>End date for this Sprint</inlineHelpText>
         <label>End Date</label>
         <required>true</required>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Date</type>
     </fields>
@@ -56,6 +57,7 @@
         <inlineHelpText>Start date for the Sprint</inlineHelpText>
         <label>Start Date</label>
         <required>true</required>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Date</type>
     </fields>
@@ -80,6 +82,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>
     </fields>
@@ -111,6 +114,7 @@
     </listViews>
     <nameField>
         <label>Sprint Name</label>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>

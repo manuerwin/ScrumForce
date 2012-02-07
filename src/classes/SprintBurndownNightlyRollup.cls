@@ -38,7 +38,7 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject>,
     }
 
     global void execute(Database.BatchableContext BC, List<User_Story__c> listUserStories) {
-    System.debug(System.LoggingLevel.DEBUG, '##DEBUG: execute');
+    	System.debug(System.LoggingLevel.DEBUG, '##DEBUG: execute');
         // loop through User Story records
         if (!listUserStories.isEmpty() ) {
             System.debug(System.LoggingLevel.DEBUG, '##DEBUG: number of records to process:' + listUserStories.size());
