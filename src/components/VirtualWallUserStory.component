@@ -30,8 +30,8 @@
                         <div class="taskTitle" > {!task.Name} </div>
                         <div class="taskOwner">{!task.Owner.Alias}</div>
                         <div class="taskLink" >
-                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
-                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                                target="_parent" >
                                 EDIT
                             </apex:outputLink>
                         </div>
@@ -48,8 +48,8 @@
                         <div class="taskTitle" > {!task.Name} </div>
                         <div class="taskOwner">{!task.Owner.Alias}</div>
                         <div class="taskLink" >
-                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
-                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                                target="_parent" >
                                 EDIT
                             </apex:outputLink>
                         </div>
@@ -66,8 +66,8 @@
                         <div class="taskTitle" > {!task.Name} </div>
                         <div class="taskOwner">{!task.Owner.Alias}</div>
                         <div class="taskLink" >
-                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
-                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                                target="_parent" >
                                 EDIT
                             </apex:outputLink>
                         </div>
@@ -84,8 +84,8 @@
                         <div class="taskTitle" > {!task.Name} </div>
                         <div class="taskOwner">{!task.Owner.Alias}</div>
                         <div class="taskLink" >
-                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?
-                                id={!userStory.theStory.Sprint__c}" target="_parent" >
+                            <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                            	target="_parent" >
                                 EDIT
                             </apex:outputLink>
                         </div>
