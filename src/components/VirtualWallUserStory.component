@@ -15,8 +15,7 @@
             </p>
             <p>
                 <apex:outputLink styleClass="newTaskLink" value="/a0o/e?CF00N60000002NaOs={!userStory.theStory.Name}
-                    &CF00N60000002NaOs_lkid={!userStory.theStory.Id}&retURL=/apex/VirtualWall?
-                    id={!userStory.theStory.Sprint__c}"
+                    &CF00N60000002NaOs_lkid={!userStory.theStory.Id}&retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
                     target="_parent" >
                     New Task
                 </apex:outputLink>
