@@ -77,6 +77,10 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Closed</fullName>
                 <default>false</default>
             </picklistValues>
