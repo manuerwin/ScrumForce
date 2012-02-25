@@ -48,7 +48,7 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject>,
 	            // create if first time (default rollup fields to zero and date to today)
 	            if (mapSprintIdToSprintBurndown.containsKey(userStory.Sprint__c)) {
 	                sprintBurndown = mapSprintIdToSprintBurndown.get(userStory.Sprint__c);
-	                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: sprintBurndown obtained from map:' + sprintBurndown);
+	                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: sprintBurndown obtained from map: ' + sprintBurndown);
 	            } else {
 	                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: Create new sprintBurndown');
 	                // Note: Setting the Unique field so can upsert existing records
