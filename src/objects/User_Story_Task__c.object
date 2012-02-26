@@ -292,6 +292,16 @@ TEXT( Rank__c )))</formula>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
+    <validationRules>
+        <fullName>US_Tasks_Not_Created_On_Done_User_Story</fullName>
+        <active>true</active>
+        <description>On insert of a User Story Task, it is an error if the the parent User Story Status is &apos;Done&apos;.</description>
+        <errorConditionFormula>AND(
+    ISNEW(),
+    TEXT( User_Story__r.Status__c ) == &apos;Done&apos;
+)</errorConditionFormula>
+        <errorMessage>User Story Tasks can not be created on &apos;Done&apos; User Stories</errorMessage>
+    </validationRules>
     <webLinks>
         <fullName>Prioritise_and_Assign</fullName>
         <availability>online</availability>
