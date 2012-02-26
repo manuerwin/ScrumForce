@@ -9,7 +9,9 @@ public class SprintBurndown_VfExt {
 
 	private Sprint__c sprint;
     public SprintBurndown_VfExt(ApexPages.StandardController stdController) {
-    	this.sprint = (Sprint__c) stdController.getRecord();
+		this.sprint = [SELECT Id, Name, Start_Date__c, Total_Sprint_Days__c
+					FROM Sprint__c
+					WHERE Id = :ApexPages.currentPage().getParameters().get('id')];
 
 	    if (sprintBurndownsExist) {
 	    	// Set up baseline values
