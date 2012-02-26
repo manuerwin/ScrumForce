@@ -26,8 +26,8 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject>,
         if (strQuery == null){
 	        System.debug(System.LoggingLevel.DEBUG, '##DEBUG: Using the default query for Production execution');
         	strQuery =	'SELECT Id, Sprint__c, Story_Points__c, Status__c, ' +
-                            '(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
-	                        'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
+                            '(SELECT Id, User_Story__c, Remaining_Hours__c, Status__c FROM User_Story__c.User_Story_Tasks__r ' +
+	                        'WHERE Status__c IN (\'Not Started\', \'In Progress\', \'Verify\')) ' +
                         'FROM User_Story__c ' +
                         'WHERE Sprint__r.Status__c = \'In Progress\'';
         } else {
@@ -64,7 +64,7 @@ global class SprintBurndownNightlyRollup implements Database.Batchable<sObject>,
 	            }
 
 				if (userStory.Status__c == 'Not Started' || userStory.Status__c == 'In Progress') {
-	                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: User Story Status = Not Started/In Progress - add points');
+	                System.debug(System.LoggingLevel.DEBUG, '##DEBUG: User Story Status = Not Started/In Progress - add points: ' + userStory);
 		            if (userStory.Story_Points__c != null) {
 			            // add User Story Story Points to SprintBurndown
 			            sprintBurndown.Total_Points_Remaining__c += userStory.Story_Points__c;

@@ -38,8 +38,8 @@ private class SprintBurndownNightlyRollup_Test {
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, Status__c, ' +
-                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
-	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c, Status__c FROM User_Story__c.User_Story_Tasks__r ' +
+	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\', \'Verify\')) ' +
                         	'FROM User_Story__c ' +
                         	'WHERE Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__c = \'' + sprint01.Id + '\'';
@@ -117,8 +117,8 @@ private class SprintBurndownNightlyRollup_Test {
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, Status__c, ' +
-                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
-	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c, Status__c FROM User_Story__c.User_Story_Tasks__r ' +
+	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\', \'Verify\')) ' +
                         	'FROM User_Story__c ' +
                         	'WHERE Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__c = \'' + sprint01.Id + '\'';
@@ -157,8 +157,8 @@ private class SprintBurndownNightlyRollup_Test {
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, Status__c, ' +
-                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
-	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c, Status__c FROM User_Story__c.User_Story_Tasks__r ' +
+	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\', \'Verify\')) ' +
                         	'FROM User_Story__c ' +
                         	'WHERE Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__c = \'' + sprint01.Id + '\'';
@@ -200,8 +200,8 @@ private class SprintBurndownNightlyRollup_Test {
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, Status__c, ' +
-                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
-	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c, Status__c FROM User_Story__c.User_Story_Tasks__r ' +
+	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\', \'Verify\')) ' +
                         	'FROM User_Story__c ' +
                         	'WHERE Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__c = \'' + sprint01.Id + '\'';
@@ -244,8 +244,8 @@ private class SprintBurndownNightlyRollup_Test {
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, Status__c, ' +
-                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
-	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c, Status__c FROM User_Story__c.User_Story_Tasks__r ' +
+	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\', \'Verify\')) ' +
                         	'FROM User_Story__c ' +
                         	'WHERE Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__c = \'' + sprint01.Id + '\'';
@@ -263,13 +263,7 @@ private class SprintBurndownNightlyRollup_Test {
 	}
 	static testMethod void multipleSprintBurndowns_Test() {
 		List<Sprint__c> listSprints = new List<Sprint__c>();
-		for (Integer intCounter = 0; intCounter < 4; intCounter++) {
-			Sprint__c sprint = new Sprint__c (Name = 'multipleSprintBurndowns_Test-' + intCounter,
-								Status__c = 'In Progress',
-								Start_Date__c = System.today().addDays(-2),
-								End_Date__c = System.today().addDays(+2));
-			listSprints.add(sprint);
-		}
+		// Distractors
 		for (Integer intCounter = 0; intCounter < 4; intCounter++) {
 			Sprint__c sprint = new Sprint__c (Name = 'multipleSprintBurndowns_Test-Future-' + intCounter,
 								Status__c = 'Not Started',
@@ -282,6 +276,14 @@ private class SprintBurndownNightlyRollup_Test {
 								Status__c = 'Done',
 								Start_Date__c = System.today().addDays(-25),
 								End_Date__c = System.today().addDays(-2));
+			listSprints.add(sprint);
+		}
+		// Actual Sprint records
+		for (Integer intCounter = 0; intCounter < 4; intCounter++) {
+			Sprint__c sprint = new Sprint__c (Name = 'multipleSprintBurndowns_Test-' + intCounter,
+								Status__c = 'In Progress',
+								Start_Date__c = System.today().addDays(-2),
+								End_Date__c = System.today().addDays(+2));
 			listSprints.add(sprint);
 		}
 		insert listSprints;
@@ -298,11 +300,10 @@ private class SprintBurndownNightlyRollup_Test {
 				} else if (intMod4 == 1) {
 					userStory.Status__c = 'In Progress';
 				} else if (intMod4 == 2) {
-					userStory.Status__c = 'Verify';
-				} else if (intMod4 == 3) {
 					userStory.Status__c = 'Done';
+				} else if (intMod4 == 3) {
+					userStory.Status__c = 'Cancelled';
 				}
-					
 				listUserStories.add(userStory);
 			}
 		}
@@ -310,8 +311,8 @@ private class SprintBurndownNightlyRollup_Test {
 
 		List<User_Story_Task__c> listUserStoryTasks = new List<User_Story_Task__c>();
 		for (User_Story__c userStory : listUserStories) {
-			if (userStory.Status__c != 'Done') {
-				System.debug('##DEBUG: userStory.Status not Done - create USTs: ' + userStory);
+			if (userStory.Status__c == 'Not Started' || userStory.Status__c == 'In Progress') {
+				System.debug('##DEBUG: userStory.Status Not Started/In Progress - create USTs: ' + userStory);
 				for (Integer intCounter = 0; intCounter < 4; intCounter++) {
 					User_Story_Task__c userStoryTask = new User_Story_Task__c(Name = 'multipleSprintBurndowns_Test-' + userStory.Id + intCounter,
 										User_Story__c = userStory.Id, Estimated_Hours__c = 2);
@@ -323,10 +324,10 @@ private class SprintBurndownNightlyRollup_Test {
 						userStoryTask.Status__c = 'In Progress';
 						userStoryTask.Remaining_Hours__c = 2;
 					} else if (intMod4 == 2) {
-						userStoryTask.Status__c = 'Done';
-						userStoryTask.Remaining_Hours__c = 0;
+						userStoryTask.Status__c = 'Verify';
+						userStoryTask.Remaining_Hours__c = 2;
 					} else if (intMod4 == 3) {
-						userStoryTask.Status__c = 'Cancelled';
+						userStoryTask.Status__c = 'Done';
 						userStoryTask.Remaining_Hours__c = 0;
 					}
 					System.debug('##DEBUG: userStoryTask: ' + userStoryTask);
@@ -341,8 +342,8 @@ private class SprintBurndownNightlyRollup_Test {
 		Test.startTest();
 			SprintBurndownNightlyRollup sch = new SprintBurndownNightlyRollup();
 			sch.strQuery =	'SELECT Id, Sprint__c, Story_Points__c, Status__c, ' +
-                            	'(SELECT Id, User_Story__c, Remaining_Hours__c FROM User_Story__c.User_Story_Tasks__r ' +
-	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\')) ' +
+                            	'(SELECT Id, User_Story__c, Remaining_Hours__c, Status__c FROM User_Story__c.User_Story_Tasks__r ' +
+	                        	'WHERE Status__c IN (\'Not Started\', \'In Progress\', \'Verify\')) ' +
                         	'FROM User_Story__c ' +
                         	'WHERE Sprint__r.Status__c = \'In Progress\' ' +
                         	'AND Sprint__r.Name LIKE \'multipleSprintBurndowns_Test%\'';
@@ -355,7 +356,7 @@ private class SprintBurndownNightlyRollup_Test {
 													WHERE Sprint__r.Name LIKE 'multipleSprintBurndowns_Test%'];
 		System.assert(listSprintBurns.size() == 4, 'There should be 4 Sprint Burndowns: ' + listSprintBurns);
 		for (Sprint_Burndown__c sprintBurn : listSprintBurns) {
-			System.assert(sprintBurn.Total_Points_Remaining__c == 6, 'There should be 6 points remaining: ' + sprintBurn);
+			System.assert(sprintBurn.Total_Points_Remaining__c == 4, 'There should be 4 points remaining: ' + sprintBurn);
 			System.assert(sprintBurn.Total_Hours_Remaining__c == 12, 'There should be 12 hours remaining: ' + sprintBurn);
 		}
 	}
