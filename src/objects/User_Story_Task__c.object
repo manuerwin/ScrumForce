@@ -293,6 +293,16 @@ TEXT( Rank__c )))</formula>
     <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
     <validationRules>
+        <fullName>US_Tasks_Not_Created_On_Cancelled_US</fullName>
+        <active>true</active>
+        <description>On insert of a User Story Task, it is an error if the the parent User Story Status is &apos;Cancelled&apos;.</description>
+        <errorConditionFormula>AND(
+    ISNEW(),
+    TEXT( User_Story__r.Status__c ) == &apos;Cancelled&apos;
+)</errorConditionFormula>
+        <errorMessage>User Story Tasks can not be created on &apos;Cancelled&apos; User Stories</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>US_Tasks_Not_Created_On_Done_User_Story</fullName>
         <active>true</active>
         <description>On insert of a User Story Task, it is an error if the the parent User Story Status is &apos;Done&apos;.</description>
