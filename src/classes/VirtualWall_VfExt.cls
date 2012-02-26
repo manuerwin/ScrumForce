@@ -39,6 +39,18 @@ public with sharing class VirtualWall_VfExt {
         }
         set;
     }
+    public Boolean userStoriesAndTasksExist {
+    	get {
+    		if (userStoriesAndTasksExist == null) {
+				userStoriesAndTasksExist = false;
+    			if (!listStoryAndTasks.isEmpty()) {
+    				userStoriesAndTasksExist = true;
+    			}
+    		}
+    		return userStoriesAndTasksExist;
+    	}
+    	set;
+    }
 
 	@RemoteAction
 	public static Boolean updateTasks (String strKeyValuePairs) {

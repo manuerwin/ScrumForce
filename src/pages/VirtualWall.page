@@ -18,11 +18,16 @@
 		    VirtualWall_VfExt.updateTasks(strSerializedContainer, function(result, event) {});
 		}
 	</script>
-    <div id="containerUserStoryManagement" >
-	    <div id="repeatUserStoryManagement" >
-		    <apex:repeat id="stories" value="{!listStoryAndTasks}" var="StoryAndTasks">
-		    	<c:VirtualWallUserStory userStory="{!StoryAndTasks}" />
-		    </apex:repeat>
-	    </div>
-	</div>
+    <apex:outputPanel id="noUserStoriesInfo" rendered="{!!userStoriesAndTasksExist}">
+    	<apex:pageMessage summary="There are no User Stories for this Sprint" severity="info" strength="3" />
+    </apex:outputPanel>
+    <apex:outputPanel id="containerUserStoryManagement" rendered="{!userStoriesAndTasksExist}">
+	    <div id="containerUserStoryManagement" >
+		    <div id="repeatUserStoryManagement" >
+			    <apex:repeat id="stories" value="{!listStoryAndTasks}" var="StoryAndTasks">
+			    	<c:VirtualWallUserStory userStory="{!StoryAndTasks}" />
+			    </apex:repeat>
+		    </div>
+		</div>
+    </apex:outputPanel>
 </apex:page>
