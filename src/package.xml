@@ -8,6 +8,7 @@
         <members>SprintBurndownNightlyRollup_Schedule</members>
         <members>SprintBurndownNightlyRollup_Test</members>
         <members>SprintBurndown_VfExt</members>
+        <members>SprintBurndown_VfExt_Test</members>
         <members>StoryAndTasks</members>
         <members>UpdateParentUserStoryStatus_Test</members>
         <members>UserStoryTasksToGrandParents_Test</members>

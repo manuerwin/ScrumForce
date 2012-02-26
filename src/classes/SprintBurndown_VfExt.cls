@@ -1,13 +1,15 @@
 public class SprintBurndown_VfExt {
-	// Created: 16-Jul-2011 By: Manu Erwin
-	// Purpose: Provide baseline and actual values for a single Sprint
-	//			to populate Burndown charts
+	/*
+	Purpose:
+		Provide baseline and actual values for a single Sprint to populate Burndown charts
+	
+	History:
+		Created: 16-Jul-2011 By: Manu Erwin
+	*/
 
 	private Sprint__c sprint;
     public SprintBurndown_VfExt(ApexPages.StandardController stdController) {
-    	sprint =	[SELECT Id, Name, Start_Date__c,Total_Sprint_Days__c
-    				FROM Sprint__c
-    				WHERE Id = :ApexPages.currentPage().getParameters().get('id')];
+    	this.sprint = (Sprint__c) stdController.getRecord();
 
 	    if (sprintBurndownsExist) {
 	    	// Set up baseline values
@@ -188,12 +190,4 @@ public class SprintBurndown_VfExt {
 		}
         return gv.toJsonString();
     }
-
-	/////////////////////////////////////////////////////////////////
-	// TEST CLASSES
-	/////////////////////////////////////////////////////////////////
-
-	public static testmethod void test() {
-		// TODO
-	}	
 }
