@@ -4,10 +4,15 @@ System.debug(LoggingLevel.DEBUG, '##:Trigger.size:' + Trigger.size);
 System.debug(LoggingLevel.DEBUG, '##:getDMLRows: ' + Limits.getDMLRows());
 System.debug(LoggingLevel.DEBUG, '##:getScriptStatements: ' + Limits.getScriptStatements());
 
-	// Created: 27-Jan-2012 By: Manu Erwin
-	// Purpose:	Set parent User Story status to 'In Progress' when any child User Story Task status
-	//			is or becomes 'In Progress'.
-	//			This trigger deals with both before insert AND before update so is split across the two contexts below.
+	/*
+	Purpose:
+		Set parent User Story status to 'In Progress' when any child User Story Task status
+		is or becomes 'In Progress'.
+		This trigger deals with both before insert AND before update so is split across the two contexts below.
+
+	History:
+	Created: 27-Jan-2012 By: Manu Erwin
+	*/
 
 	Set<Id> setParentUSIds = new Set<Id>();
 
