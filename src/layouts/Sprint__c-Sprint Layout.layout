@@ -108,12 +108,14 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>User_Story__c</fields>
         <fields>Rank__c</fields>
         <fields>Estimated_Hours__c</fields>
         <fields>Remaining_Hours__c</fields>
         <fields>Status__c</fields>
+        <fields>Task_Rank__c</fields>
         <relatedList>User_Story_Task__c.Sprint__c</relatedList>
-        <sortField>Rank__c</sortField>
+        <sortField>Task_Rank__c</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>

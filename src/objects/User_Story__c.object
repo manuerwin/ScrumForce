@@ -291,6 +291,11 @@ Themes can be used at both Programme and Project Level to drive strategic alignm
         <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Story_Points__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>OWNER.ALIAS</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Story_Points__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Epic__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Sprint__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
         <searchResultsAdditionalFields>Story_Number__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Epic__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Priority__c</searchResultsAdditionalFields>

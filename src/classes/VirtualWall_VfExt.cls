@@ -1,6 +1,16 @@
 public with sharing class VirtualWall_VfExt {
+	/*
+		Purpose:
+				- Provide list of existing User Stories and Tasks to be displayed to users on a VF page
+				- Provide RemoteAction that updates Tasks after drag and drop to update Task Status.
 
-    public VirtualWall_VfExt() {}
+		Used By:
+				VirtualWall.page
+
+		History:
+		Created: 30-Dec-2012 By: Manu Erwin
+	*/
+
     public VirtualWall_VfExt(ApexPages.StandardController stdController) {
     	this.sprint = (Sprint__c)stdController.getRecord();
     }

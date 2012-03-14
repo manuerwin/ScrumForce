@@ -14,6 +14,7 @@
         <members>UserStoryTasksToGrandParents_Test</members>
         <members>VirtualWallUserStory_VfExt</members>
         <members>VirtualWall_VfExt</members>
+        <members>VirtualWall_VfExt_Test</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -94,5 +95,5 @@
         <members>User_Story__c</members>
         <name>Workflow</name>
     </types>
-    <version>20.0</version>
+    <version>24.0</version>
 </Package>
