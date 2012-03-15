@@ -34,6 +34,12 @@
                                 EDIT
                             </apex:outputLink>
                         </div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                                target="_parent" >
+                                VIEW
+                            </apex:outputLink>
+                        </div>
                         <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
                             <apex:param value="{!task.Remaining_Hours__c}" />
                         </apex:outputText>
@@ -50,6 +56,12 @@
                             <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
                                 target="_parent" >
                                 EDIT
+                            </apex:outputLink>
+                        </div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                                target="_parent" >
+                                VIEW
                             </apex:outputLink>
                         </div>
                         <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
@@ -70,6 +82,12 @@
                                 EDIT
                             </apex:outputLink>
                         </div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                                target="_parent" >
+                                VIEW
+                            </apex:outputLink>
+                        </div>
                         <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
                             <apex:param value="{!task.Remaining_Hours__c}" />
                         </apex:outputText>
@@ -86,6 +104,12 @@
                             <apex:outputLink value="/{!task.Id}/e?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
                             	target="_parent" >
                                 EDIT
+                            </apex:outputLink>
+                        </div>
+                        <div class="taskLink" >
+                            <apex:outputLink value="/{!task.Id}?retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
+                                target="_parent" >
+                                VIEW
                             </apex:outputLink>
                         </div>
                         <apex:outputText styleClass="taskRemainingHours" value="{0, number,0}">
