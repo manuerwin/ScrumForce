@@ -49,7 +49,7 @@
 			-moz-border-radius: 3px;
 			-webkit-border-radius: 3px;
 			margin: 1px;
-			min-height: 50px;
+			min-height: 58px;
 			overflow: hidden;
 			padding-left: 4px;
 			padding-right: 2px;
