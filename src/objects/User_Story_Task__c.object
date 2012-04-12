@@ -33,7 +33,8 @@
         <type>Default</type>
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Tasks for a User Story</description>
+    <description>Tasks for a User Story.
+This has a Lookup relationship to the parent User Story because??</description>
     <enableActivities>false</enableActivities>
     <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
@@ -150,6 +151,7 @@ Green = less than 33%</inlineHelpText>
     </fields>
     <fields>
         <fullName>Sprint__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>The grandparent Sprint for this User Story. Set by a Workflow Field Update on every change.</description>
         <externalId>false</externalId>
         <inlineHelpText>The grandparent Sprint for this User Story</inlineHelpText>
@@ -243,6 +245,7 @@ TEXT( Rank__c )))</formula>
     </fields>
     <fields>
         <fullName>User_Story__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>The parent User Story</description>
         <externalId>false</externalId>
         <inlineHelpText>The parent User Story</inlineHelpText>

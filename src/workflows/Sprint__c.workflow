@@ -41,5 +41,23 @@
         </criteriaItems>
         <description>Ensure the Sprint Status is updated</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Set_Sprint_Status_To_In_Progress</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Sprint__c.Start_Date__c</offsetFromField>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Set_Sprint_Status_To_Closed</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Sprint__c.End_Date__c</offsetFromField>
+            <timeLength>23</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
     </rules>
 </Workflow>

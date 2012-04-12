@@ -65,6 +65,7 @@
     </fields>
     <fields>
         <fullName>Epic__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>The parent Epic for this User Story. An Epic is a group of related User Stories.</description>
         <externalId>false</externalId>
         <inlineHelpText>The parent Epic for this User Story. An Epic is a group of related User Stories.</inlineHelpText>
@@ -137,6 +138,7 @@
     </fields>
     <fields>
         <fullName>Sprint__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>The Sprint this User Story is contained within</description>
         <externalId>false</externalId>
         <inlineHelpText>The Sprint this User Story is contained within</inlineHelpText>
@@ -222,6 +224,7 @@
     </fields>
     <fields>
         <fullName>Theme__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>The Theme that this User Story is a part of e.g., Credit Card stories. A Theme is a top-level objective that may span projects and products. Themes may be broken down into sub-themes, which are more likely to be product-specific. At its most granular form, a Theme may be an Epic.
 Themes can be used at both Programme and Project Level to drive strategic alignment and communicate a clear direction.</description>
         <externalId>false</externalId>
@@ -275,6 +278,25 @@ Themes can be used at both Programme and Project Level to drive strategic alignm
         <columns>Epic__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>SE_Water</fullName>
+        <columns>Story_Number__c</columns>
+        <columns>NAME</columns>
+        <columns>Sprint__c</columns>
+        <columns>Story_Points__c</columns>
+        <columns>Status__c</columns>
+        <columns>Priority__c</columns>
+        <columns>Rank__c</columns>
+        <columns>Theme__c</columns>
+        <columns>Epic__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sprint__c</field>
+            <operation>contains</operation>
+            <value>SE Water Portal Dev - April</value>
+        </filters>
+        <label>SE Water</label>
     </listViews>
     <nameField>
         <label>Title</label>
