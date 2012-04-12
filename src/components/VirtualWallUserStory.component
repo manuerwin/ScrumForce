@@ -11,6 +11,8 @@
                 <h2>{!userStory.theStory.Story_Number__c} {!userStory.theStory.Name}</h2>
             </apex:outputLink>
             <p>
+                [{!userStory.theStory.Status__c}] &nbsp;
+                <!-- ({!userStory.theStory.Story_Indicator__c}) -->
                 ({!userStory.theStory.Owner.Alias})
             </p>
             <p>

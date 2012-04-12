@@ -21,7 +21,7 @@ public with sharing class VirtualWall_VfExt {
         get {
             if (listStoryAndTasks == null) {
 			    listStoryAndTasks = new List<StoryAndTasks>();
-                for (User_Story__c oneUserStory : [SELECT Id, Name, Owner.Alias, Sprint__c, Story_Number__c,
+                for (User_Story__c oneUserStory : [SELECT Id, Name, Owner.Alias, Sprint__c, Story_Number__c, Status__c, Story_Indicator__c, 
 	                						(SELECT Id, Name, Description__c,
 	                						Status__c, Owner.Alias, Remaining_Hours__c
 	                						FROM User_Story_Tasks__r ORDER BY Rank__c ASC)
