@@ -7,23 +7,23 @@
 
     <div id="userStory{!userStory.theStory.Id}" class="row">
         <div class="cell taskInfo">
-            <apex:outputLink value="/{!userStory.theStory.Id}" target="_parent" >
-                <h2>{!userStory.theStory.Story_Number__c} {!userStory.theStory.Name}</h2>
-            </apex:outputLink>
-            <p>
-                <apex:outputPanel layout="inline" >
-	                <apex:outputText escape="false" value="{!userStory.theStory.Story_Indicator__c}" /> &nbsp;
-	                [{!userStory.theStory.Status__c}] &nbsp;
-	                ({!userStory.theStory.Owner.Alias})
-                </apex:outputPanel>
-            </p>
-            <p>
+			<apex:outputPanel layout="block" >
+	            <apex:outputLink value="/{!userStory.theStory.Id}" target="_parent" >
+	                <h2>{!userStory.theStory.Story_Number__c} {!userStory.theStory.Name}</h2>
+	            </apex:outputLink>
+			</apex:outputPanel>
+			<apex:outputPanel layout="block" >
+				<apex:outputText escape="false" value="{!userStory.theStory.Story_Indicator__c}" /> &nbsp;
+				[{!userStory.theStory.Status__c}] &nbsp;
+				({!userStory.theStory.Owner.Alias})
+			</apex:outputPanel>
+			<apex:outputPanel layout="block" >
                 <apex:outputLink styleClass="newTaskLink" value="/a0o/e?CF00N60000002NaOs={!userStory.theStory.Name}
                     &CF00N60000002NaOs_lkid={!userStory.theStory.Id}&retURL=/apex/VirtualWall?id={!userStory.theStory.Sprint__c}"
                     target="_parent" >
                     New Task
                 </apex:outputLink>
-            </p>
+			</apex:outputPanel>
         </div>
         <div class="taskStatuses" >
             <div id="toDo~{!userStory.theStory.Id}" class="cell dropArea dropAreaTask">
