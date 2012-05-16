@@ -1,15 +1,18 @@
+# ANT config files
 build.*
+
+# OSX file system
 .DS_Store*
-.settings/*
-.project
-ehthumbs.db
-Icon?
-package.xml
-salesforce.schema
 Thumbs.db
 
-*-meta.xml
-*.objectTranslation
+# Eclipse specific
+.settings/*
+.project
+package.xml
+
+# Images and general files
+ehthumbs.db
+Icon?
 *.png
 *.sh
 *.xls*

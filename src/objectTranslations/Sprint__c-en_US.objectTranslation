@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sprint</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sprints</value>
+    </caseValues>
+    <fields>
+        <help><!-- End date for this Sprint --></help>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Start date for the Sprint --></help>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Status of the Sprint --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Done</masterLabel>
+            <translation><!-- Done --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Total number of days in the Sprint (including weekends). --></help>
+        <label><!-- Total Sprint Days --></label>
+        <name>Total_Sprint_Days__c</name>
+    </fields>
+    <layouts>
+        <layout>Sprint Layout</layout>
+        <sections>
+            <label><!-- Burndown Charts --></label>
+            <section>Burndown Charts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Detail Information --></label>
+            <section>Detail Information</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Prioritise_and_Assign --></label>
+        <name>Prioritise_and_Assign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Virtual_Wall --></label>
+        <name>Virtual_Wall</name>
+    </webLinks>
+</CustomObjectTranslation>
