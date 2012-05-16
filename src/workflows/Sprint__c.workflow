@@ -21,6 +21,21 @@
         <protected>false</protected>
     </fieldUpdates>
     <rules>
+        <fullName>Close Sprint if End Date in past</fullName>
+        <actions>
+            <name>Set_Sprint_Status_To_Closed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Sprint__c.End_Date__c</field>
+            <operation>lessThan</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <description>If the End Date is moved into the past (e.g., admin cleanup) then set the Status to Closed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Sprint Status Updates</fullName>
         <active>true</active>
         <booleanFilter>1 OR ( 2 AND 3 )</booleanFilter>
