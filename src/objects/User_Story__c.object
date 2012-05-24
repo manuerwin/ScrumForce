@@ -185,7 +185,7 @@
         <externalId>false</externalId>
         <formula>IMAGE (
 	CASE(Status__c , 
-		&quot;Closed&quot;, &quot;/img/samples/flag_green.gif&quot;,
+		&quot;Done&quot;, &quot;/img/samples/flag_green.gif&quot;,
 		&quot;In Progress&quot;, &quot;/img/samples/flag_yellow.gif&quot;,
 		&quot;Not Started&quot;, &quot;/img/samples/flag_red.gif&quot;, 
 		&quot;/s.gif&quot;), 
