@@ -80,6 +80,11 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>Admin</members>
+        <members>Standard</members>
+        <name>Profile</name>
+    </types>
+    <types>
         <members>scriptaculous190</members>
         <name>StaticResource</name>
     </types>
