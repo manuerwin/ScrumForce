@@ -1,11 +1,14 @@
 public class SprintBurndown_VfExt {
 	/*
 	Purpose:
-		Provide baseline and actual values for a single Sprint to populate Burndown charts
+		Provide baseline and actual values for a single Sprint to populate Burndown charts.
+		
+	Used By:
+		SprintBurndown.page
 	
 	History:
-		Created: 16-Jul-2011 By: Manu Erwin
-		16-May-2012 (Manu Erwin)	FIX: Merging test methods into main class
+		16-Jul-2011 Manu Erwin		Created
+		16-May-2012 Manu Erwin		FIX: Merging test methods into main class
 	*/
 
 	private Sprint__c sprint;
@@ -197,18 +200,21 @@ public class SprintBurndown_VfExt {
 	/* TEST METHODS */
     @isTest static void noSprintBurndownsExist_Test() {
         Sprint__c sprint = new Sprint__c(Name = 'noSprintBurndownsExist', Status__c = 'In Progress',
-        					Start_Date__c = System.today(), End_Date__c = System.today().addDays(30));
+        						Start_Date__c = System.today(), End_Date__c = System.today().addDays(30));
         insert sprint;
 
 		Test.startTest();
 		Test.setCurrentPage(Page.SprintBurndown);
 		// Requery Sprint so that formula field retrieved
 		sprint = [SELECT Id, Name, Status__c, Start_Date__c, End_Date__c, Total_Sprint_Days__c FROM Sprint__c WHERE Id = :sprint.Id];
+		System.debug('## DEBUG: sprint prior to VF: ' + sprint);
 		ApexPages.StandardController controller = new ApexPages.StandardController(sprint);
+		ApexPages.currentPage().getParameters().put('id', sprint.Id);
 		SprintBurndown_VfExt sprintBurnCon = new SprintBurndown_VfExt(controller);
 
 		Boolean bolBurndownsExist = sprintBurnCon.sprintBurndownsExist;
 		System.assert(!bolBurndownsExist, 'There should be no Sprint Burndowns: ' + bolBurndownsExist);
+		Test.stopTest();
     }
     @isTest static void sprintBurndownsExist_Test() {
         Sprint__c sprint = new Sprint__c(Name = 'sprintBurndownsExist_Test', Status__c = 'In Progress',
@@ -230,6 +236,7 @@ public class SprintBurndown_VfExt {
 		// Requery Sprint so that formula field retrieved
 		sprint = [SELECT Id, Name, Status__c, Start_Date__c, End_Date__c, Total_Sprint_Days__c FROM Sprint__c WHERE Id = :sprint.Id];
 		ApexPages.StandardController controller = new ApexPages.StandardController(sprint);
+		ApexPages.currentPage().getParameters().put('id', sprint.Id);
 		SprintBurndown_VfExt sprintBurnCon = new SprintBurndown_VfExt(controller);
 
 		Boolean bolBurndownsExist = sprintBurnCon.sprintBurndownsExist;
@@ -237,5 +244,6 @@ public class SprintBurndown_VfExt {
 
 		String strHoursRemaining = sprintBurnCon.getHoursRemainingOverTime();
 		String strPointsRemaining = sprintBurnCon.getPointsRemainingOverTime();
+		Test.stopTest();
     }
 }
